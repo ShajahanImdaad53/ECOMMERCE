@@ -1,44 +1,32 @@
-'use client';
-
 import { motion } from 'framer-motion';
 import ProductCard from '../product/ProductCard';
-
-const MOCK_PRODUCTS = [
-  {
-    _id: '1',
-    name: 'Airpods Wireless Bluetooth Headphones',
-    price: 89.99,
-    images: ['/images/airpods.jpg'],
-    ratings: 4.5,
-    category: 'Electronics',
-  },
-  {
-    _id: '2',
-    name: 'iPhone 13 Pro 256GB Memory',
-    price: 599.99,
-    images: ['/images/phone.jpg'],
-    ratings: 4.0,
-    category: 'Electronics',
-  },
-  {
-    _id: '3',
-    name: 'Cannon EOS 80D DSLR Camera',
-    price: 929.99,
-    images: ['/images/camera.jpg'],
-    ratings: 3.5,
-    category: 'Electronics',
-  },
-  {
-    _id: '4',
-    name: 'Sony Playstation 5 White Edition',
-    price: 399.99,
-    images: ['/images/playstation.jpg'],
-    ratings: 5.0,
-    category: 'Electronics',
-  },
-];
+import { useEffect, useState } from 'react';
+import api from '@/utils/api';
 
 export default function FeaturedProducts() {
+  const [products, setProducts] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const { data } = await api.get('/products');
+        setProducts(data);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProducts();
+  }, []);
+
+  if (loading) return (
+    <div className="py-24 text-center">
+      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto"></div>
+    </div>
+  );
+
   return (
     <section className="py-24 bg-white dark:bg-zinc-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -51,7 +39,7 @@ export default function FeaturedProducts() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {MOCK_PRODUCTS.map((product, index) => (
+          {products.map((product, index) => (
             <motion.div
               key={product._id}
               initial={{ opacity: 0, y: 20 }}

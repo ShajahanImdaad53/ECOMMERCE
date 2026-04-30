@@ -1,5 +1,3 @@
-'use client';
-
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import { Star, ShoppingCart, ArrowLeft, Heart, Shield, Truck, RotateCcw } from 'lucide-react';
@@ -8,33 +6,49 @@ import Link from 'next/link';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { useCartStore } from '@/store/useCartStore';
-import { useState } from 'react';
-
-// Mock data for a single product (in real app, fetch from API)
-const PRODUCT = {
-  _id: '1',
-  name: 'Airpods Wireless Bluetooth Headphones',
-  description: 'Bluetooth technology lets you connect it with compatible devices wirelessly. High-quality AAC audio offers immersive listening experience. Built-in microphone allows you to take calls while working.',
-  price: 89.99,
-  images: ['/images/airpods.jpg'],
-  ratings: 4.5,
-  numReviews: 12,
-  brand: 'Apple',
-  category: 'Electronics',
-  stock: 10,
-};
+import { useState, useEffect } from 'react';
+import api from '@/utils/api';
 
 export default function ProductDetails() {
   const { id } = useParams();
   const addItem = useCartStore((state) => state.addItem);
   const [quantity, setQuantity] = useState(1);
+  const [product, setProduct] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const { data } = await api.get(`/products/${id}`);
+        setProduct(data);
+      } catch (error) {
+        console.error('Error fetching product:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    if (id) fetchProduct();
+  }, [id]);
+
+  if (loading) return (
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
+    </div>
+  );
+
+  if (!product) return (
+    <div className="min-h-screen flex flex-col items-center justify-center">
+      <h2 className="text-2xl font-bold">Product not found</h2>
+      <Link href="/" className="mt-4 text-indigo-600">Back to Shop</Link>
+    </div>
+  );
 
   const handleAddToCart = () => {
     addItem({
-      _id: PRODUCT._id,
-      name: PRODUCT.name,
-      price: PRODUCT.price,
-      image: PRODUCT.images[0],
+      _id: product._id,
+      name: product.name,
+      price: product.price,
+      image: product.images[0],
       quantity: quantity,
     });
   };
@@ -58,8 +72,8 @@ export default function ProductDetails() {
           >
             <div className="aspect-square relative rounded-3xl overflow-hidden bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
               <Image
-                src={PRODUCT.images[0]}
-                alt={PRODUCT.name}
+                src={product.images[0]}
+                alt={product.name}
                 fill
                 className="object-cover"
               />
@@ -68,7 +82,7 @@ export default function ProductDetails() {
               {/* Thumbnail placeholders */}
               {[1, 2, 3, 4].map((i) => (
                 <div key={i} className="aspect-square relative rounded-xl overflow-hidden bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 cursor-pointer hover:border-indigo-600 transition-colors">
-                   <Image src={PRODUCT.images[0]} alt="" fill className="object-cover opacity-50" />
+                   <Image src={product.images[0]} alt="" fill className="object-cover opacity-50" />
                 </div>
               ))}
             </div>
@@ -80,31 +94,31 @@ export default function ProductDetails() {
             animate={{ opacity: 1, x: 0 }}
             className="flex flex-col"
           >
-            <span className="text-indigo-600 font-bold uppercase tracking-widest text-sm">{PRODUCT.brand}</span>
-            <h1 className="text-4xl font-extrabold text-zinc-900 dark:text-white mt-2">{PRODUCT.name}</h1>
+            <span className="text-indigo-600 font-bold uppercase tracking-widest text-sm">{product.brand}</span>
+            <h1 className="text-4xl font-extrabold text-zinc-900 dark:text-white mt-2">{product.name}</h1>
             
             <div className="flex items-center mt-4 space-x-4">
               <div className="flex items-center">
                 {[...Array(5)].map((_, i) => (
                   <Star
                     key={i}
-                    className={`h-4 w-4 ${i < Math.floor(PRODUCT.ratings) ? 'text-yellow-400 fill-yellow-400' : 'text-zinc-300 dark:text-zinc-700'}`}
+                    className={`h-4 w-4 ${i < Math.floor(product.ratings) ? 'text-yellow-400 fill-yellow-400' : 'text-zinc-300 dark:text-zinc-700'}`}
                   />
                 ))}
-                <span className="ml-2 text-sm font-medium text-zinc-900 dark:text-white">{PRODUCT.ratings}</span>
+                <span className="ml-2 text-sm font-medium text-zinc-900 dark:text-white">{product.ratings}</span>
               </div>
               <span className="text-zinc-300 dark:text-zinc-700">|</span>
-              <span className="text-sm text-zinc-500">{PRODUCT.numReviews} Reviews</span>
+              <span className="text-sm text-zinc-500">{product.numReviews} Reviews</span>
             </div>
 
             <div className="mt-8 flex items-end space-x-4">
-              <span className="text-4xl font-bold text-zinc-900 dark:text-white">${PRODUCT.price}</span>
-              <span className="text-xl text-zinc-400 line-through mb-1">${(PRODUCT.price * 1.2).toFixed(2)}</span>
+              <span className="text-4xl font-bold text-zinc-900 dark:text-white">${product.price}</span>
+              <span className="text-xl text-zinc-400 line-through mb-1">${(product.price * 1.2).toFixed(2)}</span>
               <span className="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-bold px-2 py-1 rounded-full mb-2">20% OFF</span>
             </div>
 
             <p className="mt-6 text-zinc-600 dark:text-zinc-400 leading-relaxed">
-              {PRODUCT.description}
+              {product.description}
             </p>
 
             <div className="mt-8">
@@ -118,13 +132,13 @@ export default function ProductDetails() {
                     </button>
                     <span className="px-4 font-bold">{quantity}</span>
                     <button 
-                      onClick={() => setQuantity(Math.min(PRODUCT.stock, quantity + 1))}
+                      onClick={() => setQuantity(Math.min(product.stock, quantity + 1))}
                       className="px-4 py-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
                     >
                       +
                     </button>
                  </div>
-                 <span className="text-sm text-zinc-500">{PRODUCT.stock} items available</span>
+                 <span className="text-sm text-zinc-500">{product.stock} items available</span>
               </div>
             </div>
 
