@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Mail, Lock, ArrowRight, Github } from 'lucide-react';
+import { Mail, Lock, ArrowRight } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 
@@ -96,13 +96,12 @@ export default function LoginPage() {
 
           <div className="mt-8">
             <button className="w-full flex items-center justify-center space-x-3 py-3 border border-zinc-200 dark:border-zinc-800 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
-              <Github className="h-5 w-5" />
               <span className="font-medium">Sign in with GitHub</span>
             </button>
           </div>
 
           <p className="mt-8 text-center text-sm text-zinc-600 dark:text-zinc-400">
-            Don't have an account?{' '}
+            Don&apos;t have an account?{' '}
             <Link href="/register" className="font-bold text-indigo-600 hover:underline">
               Create an account
             </Link>

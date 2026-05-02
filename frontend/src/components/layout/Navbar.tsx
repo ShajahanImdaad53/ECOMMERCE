@@ -15,7 +15,7 @@ export default function Navbar() {
   const cartItems = useCartStore((state) => state.items);
   const cartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
-  useEffect(() => setMounted(true), []);
+  useEffect(() => setMounted(true), []); // eslint-disable-line react-hooks/set-state-in-effect
 
   if (!mounted) return null;
 

@@ -1,3 +1,5 @@
+'use client';
+
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import { Star, ShoppingCart, ArrowLeft, Heart, Shield, Truck, RotateCcw } from 'lucide-react';
@@ -9,11 +11,23 @@ import { useCartStore } from '@/store/useCartStore';
 import { useState, useEffect } from 'react';
 import api from '@/utils/api';
 
+interface Product {
+  _id: string;
+  name: string;
+  price: number;
+  description: string;
+  images: string[];
+  brand: string;
+  ratings: number;
+  numReviews: number;
+  stock: number;
+}
+
 export default function ProductDetails() {
   const { id } = useParams();
   const addItem = useCartStore((state) => state.addItem);
   const [quantity, setQuantity] = useState(1);
-  const [product, setProduct] = useState<any>(null);
+  const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

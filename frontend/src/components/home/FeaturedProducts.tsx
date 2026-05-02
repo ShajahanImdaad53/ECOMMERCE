@@ -1,10 +1,12 @@
+'use client';
+
 import { motion } from 'framer-motion';
 import ProductCard from '../product/ProductCard';
 import { useEffect, useState } from 'react';
 import api from '@/utils/api';
 
 export default function FeaturedProducts() {
-  const [products, setProducts] = useState<any[]>([]);
+  const [products, setProducts] = useState<any[]>([]); // eslint-disable-line @typescript-eslint/no-explicit-any
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

@@ -24,7 +24,7 @@ export default function CartPage() {
               <ShoppingBag className="h-12 w-12 text-zinc-300 dark:text-zinc-700" />
             </div>
             <h2 className="text-2xl font-semibold text-zinc-900 dark:text-white">Your cart is empty</h2>
-            <p className="mt-2 text-zinc-500 max-w-sm">Looks like you haven't added anything to your cart yet. Explore our products and find something you love!</p>
+            <p className="mt-2 text-zinc-500 max-w-sm">Looks like you haven&apos;t added anything to your cart yet. Explore our products and find something you love!</p>
             <Link 
               href="/" 
               className="mt-8 px-8 py-3 bg-indigo-600 text-white font-bold rounded-full hover:bg-indigo-700 transition-colors"
