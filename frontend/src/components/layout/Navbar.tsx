@@ -6,6 +6,7 @@ import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useCartStore } from '@/store/useCartStore';
+import Image from 'next/image';
 
 export default function Navbar() {
   const { theme, setTheme } = useTheme();
@@ -24,8 +25,18 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
-            <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
-              PREMIUM
+            <Link href="/" className="flex items-center space-x-2">
+              <div className="relative h-8 w-8 overflow-hidden rounded-lg">
+                <Image 
+                  src="/logo.png" 
+                  alt="Premium Logo" 
+                  fill 
+                  className="object-cover"
+                />
+              </div>
+              <span className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
+                PREMIUM
+              </span>
             </Link>
           </div>
 

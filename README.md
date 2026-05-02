@@ -1,4 +1,4 @@
-# 🛍️ Premium E-Commerce Application
+# <img src="frontend/public/logo.png" width="40" height="40" valign="middle"> Premium E-Commerce Application
 
 ![Banner](frontend/public/images/banner.png)
 
@@ -104,5 +104,5 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ---
 
 <p align="center">
-  Built with ❤️ by <b>Antigravity AI</b>
+  Built by <b>Imdaad Shajahan</b>
 </p>
