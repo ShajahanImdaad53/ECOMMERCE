@@ -9,52 +9,36 @@ import { ChevronRight, Laptop, Smartphone, Watch, Camera, Coffee, Shirt, Home } 
 
 const categories = [
   {
-    name: 'Electronics',
-    slug: 'electronics',
-    description: 'Latest gadgets and tech innovation.',
-    icon: Laptop,
-    color: 'from-blue-600 to-indigo-600',
-    image: 'https://images.unsplash.com/photo-1498049794561-7780e7231661?q=80&w=1000'
+    name: 'Silk Collection',
+    slug: 'silk',
+    description: 'Luxurious hand-woven silk textiles.',
+    icon: Watch,
+    color: 'from-amber-600 to-yellow-600',
+    image: 'https://images.unsplash.com/photo-1610030469619-335689100913?q=80&w=1000'
   },
   {
-    name: 'Mobile Phones',
-    slug: 'mobile',
-    description: 'Premium smartphones and accessories.',
+    name: 'Cotton Sarongs',
+    slug: 'cotton',
+    description: 'Breathable and soft traditional cotton sarongs.',
     icon: Smartphone,
-    color: 'from-violet-600 to-purple-600',
-    image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1000'
+    color: 'from-blue-600 to-cyan-600',
+    image: 'https://images.unsplash.com/photo-1590736704728-f4730bb30770?q=80&w=1000'
   },
   {
-    name: 'Fashion',
-    slug: 'fashion',
-    description: 'Elevate your style with our collections.',
-    icon: Shirt,
-    color: 'from-pink-600 to-rose-600',
-    image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?q=80&w=1000'
-  },
-  {
-    name: 'Photography',
-    slug: 'photography',
-    description: 'Capture moments in stunning detail.',
-    icon: Camera,
-    color: 'from-emerald-600 to-teal-600',
-    image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1000'
-  },
-  {
-    name: 'Lifestyle',
-    slug: 'lifestyle',
-    description: 'Everything for your modern living.',
-    icon: Coffee,
-    color: 'from-amber-600 to-orange-600',
-    image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1000'
-  },
-  {
-    name: 'Home Decor',
-    slug: 'home',
-    description: 'Make your house feel like a home.',
+    name: 'Traditional Wear',
+    slug: 'traditional',
+    description: 'Heritage designs preserved through generations.',
     icon: Home,
-    color: 'from-cyan-600 to-blue-600',
-    image: 'https://images.unsplash.com/photo-1513519247388-44bd66cd5a5d?q=80&w=1000'
+    color: 'from-indigo-600 to-violet-600',
+    image: 'https://images.unsplash.com/photo-1594191316027-6f02120e53a3?q=80&w=1000'
+  },
+  {
+    name: 'Premium Edition',
+    slug: 'premium',
+    description: 'Limited edition masterpieces from master weavers.',
+    icon: Watch,
+    color: 'from-purple-600 to-pink-600',
+    image: 'https://images.unsplash.com/photo-1617146059253-66224424361c?q=80&w=1000'
   },
 ];
 

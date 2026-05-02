@@ -25,10 +25,10 @@ export default function Home() {
           <h2 className="text-4xl font-black text-zinc-900 dark:text-white mb-16 text-center tracking-tight">Shop by <span className="text-indigo-600">Category</span></h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { name: 'Electronics', color: 'bg-blue-600' },
-              { name: 'Fashion', color: 'bg-pink-600' },
-              { name: 'Home', color: 'bg-emerald-600' },
-              { name: 'Beauty', color: 'bg-amber-600' }
+              { name: 'Silk Collection', color: 'bg-amber-600' },
+              { name: 'Cotton Sarongs', color: 'bg-blue-600' },
+              { name: 'Traditional', color: 'bg-emerald-600' },
+              { name: 'Premium', color: 'bg-indigo-600' }
             ].map((cat, index) => (
               <motion.div 
                 key={cat.name}

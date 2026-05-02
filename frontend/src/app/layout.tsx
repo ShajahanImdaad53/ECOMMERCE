@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Premium E-Commerce | Shop the Best",
-  description: "Experience the premium shopping with our state-of-the-art e-commerce platform.",
+  title: "LoomPro | Handloom Excellence",
+  description: "LoomPro - Discover the finest handloom products, blending traditional craftsmanship with modern design.",
 };
 
 export default function RootLayout({

@@ -35,7 +35,7 @@ export default function Hero() {
             transition={{ duration: 0.8 }}
             className="text-5xl md:text-7xl font-extrabold tracking-tight text-zinc-900 dark:text-white leading-tight"
           >
-            Elevate Your <span className="text-indigo-600">Style</span> with Premium Tech.
+            Artisanal <span className="text-indigo-600">Handloom</span> for the Modern Era.
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -43,7 +43,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mt-6 text-lg text-zinc-600 dark:text-zinc-400"
           >
-            Discover our curated collection of high-end electronics and lifestyle products. Quality meets innovation.
+            LoomPro brings you authentic, handcrafted textiles directly from master artisans. Experience the comfort of pure cotton and silk.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
