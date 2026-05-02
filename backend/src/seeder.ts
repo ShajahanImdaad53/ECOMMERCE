@@ -10,7 +10,7 @@ mongoose.connect(mongoUri);
 const products = [
   {
     name: 'Airpods Wireless Bluetooth Headphones',
-    images: ['/images/airpods.jpg'],
+    images: ['/images/airpods.png'],
     description:
       'Bluetooth technology lets you connect it with compatible devices wirelessly High-quality AAC audio offers immersive listening experience Built-in microphone allows you to take calls while working',
     brand: 'Apple',
@@ -22,7 +22,7 @@ const products = [
   },
   {
     name: 'iPhone 13 Pro 256GB Memory',
-    images: ['/images/phone.jpg'],
+    images: ['/images/phone.png'],
     description:
       'Introducing the iPhone 13 Pro. A dramatically more powerful camera system. A display so responsive, every interaction feels new again. The worlds fastest smartphone chip. Exceptional durability. And a huge leap in battery life.',
     brand: 'Apple',
@@ -34,7 +34,7 @@ const products = [
   },
   {
     name: 'Cannon EOS 80D DSLR Camera',
-    images: ['/images/camera.jpg'],
+    images: ['/images/camera.png'],
     description:
       'Characterized by versatile imaging specs, the Canon EOS 80D further clarifies itself using a pair of robust focusing systems and an intuitive design',
     brand: 'Cannon',
@@ -46,7 +46,7 @@ const products = [
   },
   {
     name: 'Sony Playstation 5 White Edition',
-    images: ['/images/playstation.jpg'],
+    images: ['/images/playstation.png'],
     description:
       'The ultimate home entertainment center starts with PlayStation. Whether you are into gaming, HD movies, television, music',
     brand: 'Sony',
