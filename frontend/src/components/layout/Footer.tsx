@@ -1,56 +1,103 @@
 import Link from 'next/link';
+import { Facebook, Instagram, Twitter, Youtube, Mail, Phone, MapPin } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-zinc-50 dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-800 py-12">
+    <footer className="bg-zinc-100 dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800 pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+          
+          {/* Customer Care */}
           <div>
-            <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100 uppercase tracking-wider mb-4">Shop</h3>
-            <ul className="space-y-2">
-              <li><Link href="/shop" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-indigo-600">All Products</Link></li>
-              <li><Link href="/categories/electronics" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-indigo-600">Electronics</Link></li>
-              <li><Link href="/categories/fashion" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-indigo-600">Fashion</Link></li>
-              <li><Link href="/categories/home" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-indigo-600">Home & Living</Link></li>
+            <h3 className="text-primary font-bold text-lg mb-6">Customer Care</h3>
+            <ul className="space-y-3">
+              <li><Link href="#" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-primary transition-colors">Help Center</Link></li>
+              <li><Link href="#" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-primary transition-colors">How to Buy</Link></li>
+              <li><Link href="#" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-primary transition-colors">Returns & Refunds</Link></li>
+              <li><Link href="#" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-primary transition-colors">Contact Us</Link></li>
+              <li><Link href="#" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-primary transition-colors">Terms & Conditions</Link></li>
             </ul>
           </div>
+
+          {/* Daraz Clone */}
           <div>
-            <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100 uppercase tracking-wider mb-4">Support</h3>
-            <ul className="space-y-2">
-              <li><Link href="/contact" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-indigo-600">Contact Us</Link></li>
-              <li><Link href="/faq" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-indigo-600">FAQ</Link></li>
-              <li><Link href="/shipping" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-indigo-600">Shipping Info</Link></li>
-              <li><Link href="/returns" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-indigo-600">Returns</Link></li>
+            <h3 className="text-primary font-bold text-lg mb-6">Daraz Clone</h3>
+            <ul className="space-y-3">
+              <li><Link href="#" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-primary transition-colors">About Daraz Clone</Link></li>
+              <li><Link href="#" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-primary transition-colors">Digital Payments</Link></li>
+              <li><Link href="#" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-primary transition-colors">Daraz Donates</Link></li>
+              <li><Link href="#" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-primary transition-colors">Daraz Blog</Link></li>
+              <li><Link href="#" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-primary transition-colors">Join the Daraz Affiliate Program</Link></li>
             </ul>
           </div>
+
+          {/* Contact Info */}
           <div>
-            <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100 uppercase tracking-wider mb-4">Company</h3>
-            <ul className="space-y-2">
-              <li><Link href="/about" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-indigo-600">About Us</Link></li>
-              <li><Link href="/careers" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-indigo-600">Careers</Link></li>
-              <li><Link href="/privacy" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-indigo-600">Privacy Policy</Link></li>
-              <li><Link href="/terms" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-indigo-600">Terms of Service</Link></li>
+            <h3 className="text-primary font-bold text-lg mb-6">Contact Us</h3>
+            <ul className="space-y-4">
+              <li className="flex items-start space-x-3">
+                <MapPin className="h-5 w-5 text-primary mt-0.5" />
+                <span className="text-sm text-zinc-600 dark:text-zinc-400">123 E-Commerce Ave, Digital City, 10100</span>
+              </li>
+              <li className="flex items-center space-x-3">
+                <Phone className="h-5 w-5 text-primary" />
+                <span className="text-sm text-zinc-600 dark:text-zinc-400">+94 11 234 5678</span>
+              </li>
+              <li className="flex items-center space-x-3">
+                <Mail className="h-5 w-5 text-primary" />
+                <span className="text-sm text-zinc-600 dark:text-zinc-400">support@darazclone.lk</span>
+              </li>
             </ul>
           </div>
+
+          {/* Socials & Apps */}
           <div>
-            <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100 uppercase tracking-wider mb-4">Newsletter</h3>
-            <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-4">Subscribe to get special offers and once-in-a-lifetime deals.</p>
-            <form className="flex">
-              <input
-                type="email"
-                placeholder="Email address"
-                className="flex-1 px-3 py-2 text-sm border border-zinc-200 dark:border-zinc-800 rounded-l-md bg-white dark:bg-zinc-800 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+            <h3 className="text-primary font-bold text-lg mb-6">Follow Us</h3>
+            <div className="flex space-x-4 mb-8">
+              <Link href="#" className="p-2 bg-white dark:bg-zinc-900 rounded-full shadow-sm hover:text-primary transition-all hover:scale-110">
+                <Facebook className="h-5 w-5" />
+              </Link>
+              <Link href="#" className="p-2 bg-white dark:bg-zinc-900 rounded-full shadow-sm hover:text-primary transition-all hover:scale-110">
+                <Instagram className="h-5 w-5" />
+              </Link>
+              <Link href="#" className="p-2 bg-white dark:bg-zinc-900 rounded-full shadow-sm hover:text-primary transition-all hover:scale-110">
+                <Twitter className="h-5 w-5" />
+              </Link>
+              <Link href="#" className="p-2 bg-white dark:bg-zinc-900 rounded-full shadow-sm hover:text-primary transition-all hover:scale-110">
+                <Youtube className="h-5 w-5" />
+              </Link>
+            </div>
+            <h3 className="text-primary font-bold text-lg mb-4">Newsletter</h3>
+            <div className="flex bg-white dark:bg-zinc-900 rounded-md overflow-hidden p-1 ring-1 ring-zinc-200 dark:ring-zinc-800 focus-within:ring-primary">
+              <input 
+                type="email" 
+                placeholder="Your email" 
+                className="flex-1 px-3 py-2 text-sm bg-transparent outline-none"
               />
-              <button className="px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-r-md hover:bg-indigo-700 transition-colors">
+              <button className="bg-primary text-white px-4 py-2 text-sm font-bold rounded-md hover:bg-primary-hover transition-colors">
                 Join
               </button>
-            </form>
+            </div>
           </div>
         </div>
-        <div className="mt-12 pt-8 border-t border-zinc-200 dark:border-zinc-800 text-center">
-          <p className="text-sm text-zinc-500">&copy; {new Date().getFullYear()} PREMIUM E-Commerce. All rights reserved.</p>
+
+        {/* Bottom Section */}
+        <div className="pt-8 border-t border-zinc-200 dark:border-zinc-800">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <div className="text-sm text-zinc-500 dark:text-zinc-500">
+              © {new Date().getFullYear()} <span className="font-bold text-primary">DARAZ.CLONE</span>. All rights reserved.
+            </div>
+            <div className="flex items-center space-x-6">
+              <img src="https://img.icons8.com/color/48/000000/visa.png" alt="Visa" className="h-8 grayscale hover:grayscale-0 transition-all" />
+              <img src="https://img.icons8.com/color/48/000000/mastercard.png" alt="Mastercard" className="h-8 grayscale hover:grayscale-0 transition-all" />
+              <img src="https://img.icons8.com/color/48/000000/paypal.png" alt="Paypal" className="h-8 grayscale hover:grayscale-0 transition-all" />
+              <img src="https://img.icons8.com/color/48/000000/amex.png" alt="Amex" className="h-8 grayscale hover:grayscale-0 transition-all" />
+            </div>
+          </div>
         </div>
       </div>
     </footer>
+  );
+}
   );
 }
