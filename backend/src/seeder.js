@@ -1,0 +1,676 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const mongoose_1 = __importDefault(require("mongoose"));
+const dotenv_1 = __importDefault(require("dotenv"));
+const Product_1 = __importDefault(require("./models/Product"));
+dotenv_1.default.config();
+const mongoUri = process.env.MONGO_URI || 'mongodb://localhost:27017/ecommerce';
+mongoose_1.default.connect(mongoUri);
+const products = [
+    {
+        name: 'Handloom Cotton Puni Sarong - Deep Burgundy with White Royal Blue and Red Stripes Multi Color Bottom Border',
+        images: ['/images/Handloom Cotton Puni Sarong - Deep Burgundy with White Royal Blue and Red Stripes Multi Color Bottom Border - ICS 149349.jpeg'],
+        description: 'Handloom Cotton Puni Sarong - Deep Burgundy with White Royal Blue and Red Stripes Multi Color Bottom Border. Hand-woven with premium cotton for superior comfort and style. Code: ICS 149349',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 52,
+        stock: 15,
+        ratings: 4.5,
+        numReviews: 12
+    },
+    {
+        name: 'Handloom Cotton Sarong - Aqua Blue Dark Charcoal Grey and White with Black Stripes',
+        images: ['/images/Handloom Cotton Sarong - Aqua Blue Dark Charcoal Grey and White with Black Stripes - ICS 830011.jpeg'],
+        description: 'Handloom Cotton Sarong - Aqua Blue Dark Charcoal Grey and White with Black Stripes. Hand-woven with premium cotton for superior comfort and style. Code: ICS 830011',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 41,
+        stock: 7,
+        ratings: 4.5,
+        numReviews: 7
+    },
+    {
+        name: 'Handloom Cotton Sarong - Aqua Blue Dark Charcoal Grey with Black and White Stripes',
+        images: ['/images/Handloom Cotton Sarong - Aqua Blue Dark Charcoal Grey with Black and White Stripes - ICS 915504.jpeg'],
+        description: 'Handloom Cotton Sarong - Aqua Blue Dark Charcoal Grey with Black and White Stripes. Hand-woven with premium cotton for superior comfort and style. Code: ICS 915504',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 59,
+        stock: 11,
+        ratings: 4.5,
+        numReviews: 13
+    },
+    {
+        name: 'Handloom Cotton Sarong - Aqua Blue Light Charcoal Grey with Light Peach and White Stripes',
+        images: ['/images/Handloom Cotton Sarong - Aqua Blue Light Charcoal Grey with Light Peach and White Stripes - ICS 432649.jpeg'],
+        description: 'Handloom Cotton Sarong - Aqua Blue Light Charcoal Grey with Light Peach and White Stripes. Hand-woven with premium cotton for superior comfort and style. Code: ICS 432649',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 36,
+        stock: 11,
+        ratings: 4.5,
+        numReviews: 29
+    },
+    {
+        name: 'Handloom Cotton Sarong - Beige and Black Horizontal Stripes Bottom Border',
+        images: ['/images/Handloom Cotton Sarong - Beige and Black Horizontal Stripes Bottom Border - ICS 744981.jpeg'],
+        description: 'Handloom Cotton Sarong - Beige and Black Horizontal Stripes Bottom Border. Hand-woven with premium cotton for superior comfort and style. Code: ICS 744981',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 48,
+        stock: 17,
+        ratings: 4.5,
+        numReviews: 29
+    },
+    {
+        name: 'Handloom Cotton Sarong - Beige and Charcoal Grey with Teal',
+        images: ['/images/Handloom Cotton Sarong - Beige and Charcoal Grey with Teal - ICS 778374.jpeg'],
+        description: 'Handloom Cotton Sarong - Beige and Charcoal Grey with Teal. Hand-woven with premium cotton for superior comfort and style. Code: ICS 778374',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 54,
+        stock: 5,
+        ratings: 4.5,
+        numReviews: 19
+    },
+    {
+        name: 'Handloom Cotton Sarong - Beige Dark Grey and Black Horizontal Stripes Bottom Border',
+        images: ['/images/Handloom Cotton Sarong - Beige Dark Grey and Black Horizontal Stripes Bottom Border - ICS 930347.jpeg'],
+        description: 'Handloom Cotton Sarong - Beige Dark Grey and Black Horizontal Stripes Bottom Border. Hand-woven with premium cotton for superior comfort and style. Code: ICS 930347',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 55,
+        stock: 6,
+        ratings: 4.5,
+        numReviews: 11
+    },
+    {
+        name: 'Handloom Cotton Sarong - Beige with Horizontal Stripes Bottom Border',
+        images: ['/images/Handloom Cotton Sarong - Beige with Horizontal Stripes Bottom Border - ICS 150669.jpeg'],
+        description: 'Handloom Cotton Sarong - Beige with Horizontal Stripes Bottom Border. Hand-woven with premium cotton for superior comfort and style. Code: ICS 150669',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 44,
+        stock: 7,
+        ratings: 4.5,
+        numReviews: 24
+    },
+    {
+        name: 'Handloom Cotton Sarong - Beige with Teal',
+        images: ['/images/Handloom Cotton Sarong - Beige with Teal - ICS 329080.jpeg'],
+        description: 'Handloom Cotton Sarong - Beige with Teal. Hand-woven with premium cotton for superior comfort and style. Code: ICS 329080',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 58,
+        stock: 8,
+        ratings: 4.5,
+        numReviews: 11
+    },
+    {
+        name: 'Handloom Cotton Sarong - Black and Dark Grey with Beige',
+        images: ['/images/Handloom Cotton Sarong - Black and Dark Grey with Beige - ICS 571565.jpeg'],
+        description: 'Handloom Cotton Sarong - Black and Dark Grey with Beige. Hand-woven with premium cotton for superior comfort and style. Code: ICS 571565',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 35,
+        stock: 15,
+        ratings: 4.5,
+        numReviews: 24
+    },
+    {
+        name: 'Handloom Cotton Sarong - Black and Golden Yellow with Silver Bottom Border',
+        images: ['/images/Handloom Cotton Sarong - Black and Golden Yellow with Silver Bottom Border - ICS 959168.jpeg'],
+        description: 'Handloom Cotton Sarong - Black and Golden Yellow with Silver Bottom Border. Hand-woven with premium cotton for superior comfort and style. Code: ICS 959168',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 64,
+        stock: 11,
+        ratings: 4.5,
+        numReviews: 7
+    },
+    {
+        name: 'Handloom Cotton Sarong - Black with Beige',
+        images: ['/images/Handloom Cotton Sarong - Black with Beige - ICS 479457.jpeg'],
+        description: 'Handloom Cotton Sarong - Black with Beige. Hand-woven with premium cotton for superior comfort and style. Code: ICS 479457',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 54,
+        stock: 17,
+        ratings: 4.5,
+        numReviews: 13
+    },
+    {
+        name: 'Handloom Cotton Sarong - Black with Beige Bottom Border',
+        images: ['/images/Handloom Cotton Sarong - Black with Beige Bottom Border - ICS 970375.jpeg'],
+        description: 'Handloom Cotton Sarong - Black with Beige Bottom Border. Hand-woven with premium cotton for superior comfort and style. Code: ICS 970375',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 62,
+        stock: 12,
+        ratings: 4.5,
+        numReviews: 25
+    },
+    {
+        name: 'Handloom Cotton Sarong - Black with Beige Stripes',
+        images: ['/images/Handloom Cotton Sarong - Black with Beige Stripes - ICS 717334.jpeg'],
+        description: 'Handloom Cotton Sarong - Black with Beige Stripes. Hand-woven with premium cotton for superior comfort and style. Code: ICS 717334',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 41,
+        stock: 10,
+        ratings: 4.5,
+        numReviews: 14
+    },
+    {
+        name: 'Handloom Cotton Sarong - Bluish Grey with Off White Bottom Border',
+        images: ['/images/Handloom Cotton Sarong - Bluish Grey with Off White Bottom Border - ICS 813185.jpeg'],
+        description: 'Handloom Cotton Sarong - Bluish Grey with Off White Bottom Border. Hand-woven with premium cotton for superior comfort and style. Code: ICS 813185',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 56,
+        stock: 8,
+        ratings: 4.5,
+        numReviews: 23
+    },
+    {
+        name: 'Handloom Cotton Sarong - Charcoal Grey and Slate with Teal',
+        images: ['/images/Handloom Cotton Sarong - Charcoal Grey and Slate with Teal - ICS 765035.jpeg'],
+        description: 'Handloom Cotton Sarong - Charcoal Grey and Slate with Teal. Hand-woven with premium cotton for superior comfort and style. Code: ICS 765035',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 53,
+        stock: 16,
+        ratings: 4.5,
+        numReviews: 12
+    },
+    {
+        name: 'Handloom Cotton Sarong - Charcoal Grey Slate and Light Peach with Teal',
+        images: ['/images/Handloom Cotton Sarong - Charcoal Grey Slate and Light Peach with Teal - ICS 471658.jpeg'],
+        description: 'Handloom Cotton Sarong - Charcoal Grey Slate and Light Peach with Teal. Hand-woven with premium cotton for superior comfort and style. Code: ICS 471658',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 63,
+        stock: 9,
+        ratings: 4.5,
+        numReviews: 9
+    },
+    {
+        name: 'Handloom Cotton Sarong - Citron Yellow and Charcoal Grey with Teal',
+        images: ['/images/Handloom Cotton Sarong - Citron Yellow and Charcoal Grey with Teal - ICS 340801.jpeg'],
+        description: 'Handloom Cotton Sarong - Citron Yellow and Charcoal Grey with Teal. Hand-woven with premium cotton for superior comfort and style. Code: ICS 340801',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 60,
+        stock: 19,
+        ratings: 4.5,
+        numReviews: 15
+    },
+    {
+        name: 'Handloom Cotton Sarong - Citron Yellow Light Grey and Charcoal Grey with Teal',
+        images: ['/images/Handloom Cotton Sarong - Citron Yellow Light Grey and Charcoal Grey with Teal - ICS 427322.jpeg'],
+        description: 'Handloom Cotton Sarong - Citron Yellow Light Grey and Charcoal Grey with Teal. Hand-woven with premium cotton for superior comfort and style. Code: ICS 427322',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 47,
+        stock: 19,
+        ratings: 4.5,
+        numReviews: 29
+    },
+    {
+        name: 'Handloom Cotton Sarong - Cream and White with Beige Stripes',
+        images: ['/images/Handloom Cotton Sarong - Cream and White with Beige Stripes - ICS 923237.jpeg'],
+        description: 'Handloom Cotton Sarong - Cream and White with Beige Stripes. Hand-woven with premium cotton for superior comfort and style. Code: ICS 923237',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 35,
+        stock: 16,
+        ratings: 4.5,
+        numReviews: 14
+    },
+    {
+        name: 'Handloom Cotton Sarong - Cream Light Green Charcoal Grey and White with Beige',
+        images: ['/images/Handloom Cotton Sarong - Cream Light Green Charcoal Grey and White with Beige - ICS 966237.jpeg'],
+        description: 'Handloom Cotton Sarong - Cream Light Green Charcoal Grey and White with Beige. Hand-woven with premium cotton for superior comfort and style. Code: ICS 966237',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 43,
+        stock: 17,
+        ratings: 4.5,
+        numReviews: 15
+    },
+    {
+        name: 'Handloom Cotton Sarong - Dark Grey and Silver Stripes with Beige Bottom Border',
+        images: ['/images/Handloom Cotton Sarong - Dark Grey and Silver Stripes with Beige Bottom Border - ICS 255396.jpeg'],
+        description: 'Handloom Cotton Sarong - Dark Grey and Silver Stripes with Beige Bottom Border. Hand-woven with premium cotton for superior comfort and style. Code: ICS 255396',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 59,
+        stock: 6,
+        ratings: 4.5,
+        numReviews: 25
+    },
+    {
+        name: 'Handloom Cotton Sarong - Dark Grey Silver and Black with Beige Bottom Border',
+        images: ['/images/Handloom Cotton Sarong - Dark Grey Silver and Black with Beige Bottom Border - ICS 322307.jpeg'],
+        description: 'Handloom Cotton Sarong - Dark Grey Silver and Black with Beige Bottom Border. Hand-woven with premium cotton for superior comfort and style. Code: ICS 322307',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 48,
+        stock: 12,
+        ratings: 4.5,
+        numReviews: 20
+    },
+    {
+        name: 'Handloom Cotton Sarong - Dark Grey with Beige',
+        images: ['/images/Handloom Cotton Sarong - Dark Grey with Beige - ICS 736709.jpeg'],
+        description: 'Handloom Cotton Sarong - Dark Grey with Beige. Hand-woven with premium cotton for superior comfort and style. Code: ICS 736709',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 37,
+        stock: 14,
+        ratings: 4.5,
+        numReviews: 28
+    },
+    {
+        name: 'Handloom Cotton Sarong - Dark Navy Blue and Golden Yellow Stripes with Cream',
+        images: ['/images/Handloom Cotton Sarong - Dark Navy Blue and Golden Yellow Stripes with Cream - ICS 876683.jpeg'],
+        description: 'Handloom Cotton Sarong - Dark Navy Blue and Golden Yellow Stripes with Cream. Hand-woven with premium cotton for superior comfort and style. Code: ICS 876683',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 44,
+        stock: 9,
+        ratings: 4.5,
+        numReviews: 16
+    },
+    {
+        name: 'Handloom Cotton Sarong - Dark Navy Blue and Golden Yellow with Cream',
+        images: ['/images/Handloom Cotton Sarong - Dark Navy Blue and Golden Yellow with Cream - ICS 564546.jpeg'],
+        description: 'Handloom Cotton Sarong - Dark Navy Blue and Golden Yellow with Cream. Hand-woven with premium cotton for superior comfort and style. Code: ICS 564546',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 35,
+        stock: 5,
+        ratings: 4.5,
+        numReviews: 19
+    },
+    {
+        name: 'Handloom Cotton Sarong - Dark Sky Blue and Charcoal Grey with Teal',
+        images: ['/images/Handloom Cotton Sarong - Dark Sky Blue and Charcoal Grey with Teal - ICS 184690.jpeg'],
+        description: 'Handloom Cotton Sarong - Dark Sky Blue and Charcoal Grey with Teal. Hand-woven with premium cotton for superior comfort and style. Code: ICS 184690',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 52,
+        stock: 17,
+        ratings: 4.5,
+        numReviews: 7
+    },
+    {
+        name: 'Handloom Cotton Sarong - Dark Sky Blue and Charcoal Grey with Teal',
+        images: ['/images/Handloom Cotton Sarong - Dark Sky Blue and Charcoal Grey with Teal - ICS 607023.jpeg'],
+        description: 'Handloom Cotton Sarong - Dark Sky Blue and Charcoal Grey with Teal. Hand-woven with premium cotton for superior comfort and style. Code: ICS 607023',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 62,
+        stock: 15,
+        ratings: 4.5,
+        numReviews: 11
+    },
+    {
+        name: 'Handloom Cotton Sarong - Dark Sky Blue and Charcoal Grey with Teal',
+        images: ['/images/Handloom Cotton Sarong - Dark Sky Blue and Charcoal Grey with Teal - ICS 693210.jpeg'],
+        description: 'Handloom Cotton Sarong - Dark Sky Blue and Charcoal Grey with Teal. Hand-woven with premium cotton for superior comfort and style. Code: ICS 693210',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 38,
+        stock: 13,
+        ratings: 4.5,
+        numReviews: 20
+    },
+    {
+        name: 'Handloom Cotton Sarong - Dark Sky Blue and Charcoal Grey with Teal',
+        images: ['/images/Handloom Cotton Sarong - Dark Sky Blue and Charcoal Grey with Teal - ICS 991249.jpeg'],
+        description: 'Handloom Cotton Sarong - Dark Sky Blue and Charcoal Grey with Teal. Hand-woven with premium cotton for superior comfort and style. Code: ICS 991249',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 45,
+        stock: 12,
+        ratings: 4.5,
+        numReviews: 25
+    },
+    {
+        name: 'Handloom Cotton Sarong - Dark Sky Blue Beige and Charcoal Grey with Brown',
+        images: ['/images/Handloom Cotton Sarong - Dark Sky Blue Beige and Charcoal Grey with Brown - ICS 402260.jpeg'],
+        description: 'Handloom Cotton Sarong - Dark Sky Blue Beige and Charcoal Grey with Brown. Hand-woven with premium cotton for superior comfort and style. Code: ICS 402260',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 39,
+        stock: 12,
+        ratings: 4.5,
+        numReviews: 16
+    },
+    {
+        name: 'Handloom Cotton Sarong - Dark Sky Blue Beige and Charcoal Grey with Maroon',
+        images: ['/images/Handloom Cotton Sarong - Dark Sky Blue Beige and Charcoal Grey with Maroon - ICS 574872.jpeg'],
+        description: 'Handloom Cotton Sarong - Dark Sky Blue Beige and Charcoal Grey with Maroon. Hand-woven with premium cotton for superior comfort and style. Code: ICS 574872',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 49,
+        stock: 11,
+        ratings: 4.5,
+        numReviews: 6
+    },
+    {
+        name: 'Handloom Cotton Sarong - Deep Purple Emerald Green Turquoise Sky Blue and Dark Navy Blue Check Patterns',
+        images: ['/images/Handloom Cotton Sarong - Deep Purple Emerald Green Turquoise Sky Blue and Dark Navy Blue Check Patterns - 3213.jpeg'],
+        description: 'Handloom Cotton Sarong - Deep Purple Emerald Green Turquoise Sky Blue and Dark Navy Blue Check Patterns. Hand-woven with premium cotton for superior comfort and style. Code: 3213',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 47,
+        stock: 18,
+        ratings: 4.5,
+        numReviews: 11
+    },
+    {
+        name: 'Handloom Cotton Sarong',
+        images: ['/images/Handloom Cotton Sarong - Deep Purple Magenta Emerald Green Turquoise Sky Blue and Teal in Check Patterns.jpeg'],
+        description: 'Handloom Cotton Sarong. Hand-woven with premium cotton for superior comfort and style. Code: Deep Purple Magenta Emerald Green Turquoise Sky Blue and Teal in Check Patterns',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 44,
+        stock: 8,
+        ratings: 4.5,
+        numReviews: 17
+    },
+    {
+        name: 'Handloom Cotton Sarong - Deep Teal with Cream Bottom Border',
+        images: ['/images/Handloom Cotton Sarong - Deep Teal with Cream Bottom Border - ICS 641242.jpeg'],
+        description: 'Handloom Cotton Sarong - Deep Teal with Cream Bottom Border. Hand-woven with premium cotton for superior comfort and style. Code: ICS 641242',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 38,
+        stock: 10,
+        ratings: 4.5,
+        numReviews: 6
+    },
+    {
+        name: 'Handloom Cotton Sarong - Golden Yellow and Black with Beige',
+        images: ['/images/Handloom Cotton Sarong - Golden Yellow and Black with Beige - ICS 112981.jpeg'],
+        description: 'Handloom Cotton Sarong - Golden Yellow and Black with Beige. Hand-woven with premium cotton for superior comfort and style. Code: ICS 112981',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 50,
+        stock: 13,
+        ratings: 4.5,
+        numReviews: 27
+    },
+    {
+        name: 'Handloom Cotton Sarong - Light Blue Plain',
+        images: ['/images/Handloom Cotton Sarong - Light Blue Plain - ICS 738244.jpeg'],
+        description: 'Handloom Cotton Sarong - Light Blue Plain. Hand-woven with premium cotton for superior comfort and style. Code: ICS 738244',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 63,
+        stock: 8,
+        ratings: 4.5,
+        numReviews: 13
+    },
+    {
+        name: 'Handloom Cotton Sarong - Light Blue with Dark Blue Stripes',
+        images: ['/images/Handloom Cotton Sarong - Light Blue with Dark Blue Stripes - ICS 609818.jpeg'],
+        description: 'Handloom Cotton Sarong - Light Blue with Dark Blue Stripes. Hand-woven with premium cotton for superior comfort and style. Code: ICS 609818',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 42,
+        stock: 13,
+        ratings: 4.5,
+        numReviews: 17
+    },
+    {
+        name: 'Handloom Cotton Sarong - Light Brown and Charcoal Grey with Teal',
+        images: ['/images/Handloom Cotton Sarong - Light Brown and Charcoal Grey with Teal - ICS 345192.jpeg'],
+        description: 'Handloom Cotton Sarong - Light Brown and Charcoal Grey with Teal. Hand-woven with premium cotton for superior comfort and style. Code: ICS 345192',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 43,
+        stock: 17,
+        ratings: 4.5,
+        numReviews: 5
+    },
+    {
+        name: 'Handloom Cotton Sarong - Light Brown Black and Silver Horizontal Stripes Bottom Border',
+        images: ['/images/Handloom Cotton Sarong - Light Brown Black and Silver Horizontal Stripes Bottom Border - ICS 441742.jpeg'],
+        description: 'Handloom Cotton Sarong - Light Brown Black and Silver Horizontal Stripes Bottom Border. Hand-woven with premium cotton for superior comfort and style. Code: ICS 441742',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 42,
+        stock: 8,
+        ratings: 4.5,
+        numReviews: 18
+    },
+    {
+        name: 'Handloom Cotton Sarong - Light Brown with Horizontal Stripes Bottom Border',
+        images: ['/images/Handloom Cotton Sarong - Light Brown with Horizontal Stripes Bottom Border - ICS 585250.jpeg'],
+        description: 'Handloom Cotton Sarong - Light Brown with Horizontal Stripes Bottom Border. Hand-woven with premium cotton for superior comfort and style. Code: ICS 585250',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 54,
+        stock: 17,
+        ratings: 4.5,
+        numReviews: 28
+    },
+    {
+        name: 'Handloom Cotton Sarong - Light Charcoal Grey and White with Light Peach',
+        images: ['/images/Handloom Cotton Sarong - Light Charcoal Grey and White with Light Peach - ICS 290161.jpeg'],
+        description: 'Handloom Cotton Sarong - Light Charcoal Grey and White with Light Peach. Hand-woven with premium cotton for superior comfort and style. Code: ICS 290161',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 36,
+        stock: 12,
+        ratings: 4.5,
+        numReviews: 26
+    },
+    {
+        name: 'Handloom Cotton Sarong - Light Green Charcoal Grey and Black Stripes with Teal',
+        images: ['/images/Handloom Cotton Sarong - Light Green Charcoal Grey and Black Stripes with Teal - ICS 460411.jpeg'],
+        description: 'Handloom Cotton Sarong - Light Green Charcoal Grey and Black Stripes with Teal. Hand-woven with premium cotton for superior comfort and style. Code: ICS 460411',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 54,
+        stock: 6,
+        ratings: 4.5,
+        numReviews: 16
+    },
+    {
+        name: 'Handloom Cotton Sarong - Light Green with Teal',
+        images: ['/images/Handloom Cotton Sarong - Light Green with Teal - ICS 681566.jpeg'],
+        description: 'Handloom Cotton Sarong - Light Green with Teal. Hand-woven with premium cotton for superior comfort and style. Code: ICS 681566',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 35,
+        stock: 8,
+        ratings: 4.5,
+        numReviews: 13
+    },
+    {
+        name: 'Handloom Cotton Sarong - Light Sage Green with White and Beige Stripes',
+        images: ['/images/Handloom Cotton Sarong - Light Sage Green with White and Beige Stripes - ICS 248998.jpeg'],
+        description: 'Handloom Cotton Sarong - Light Sage Green with White and Beige Stripes. Hand-woven with premium cotton for superior comfort and style. Code: ICS 248998',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 60,
+        stock: 7,
+        ratings: 4.5,
+        numReviews: 22
+    },
+    {
+        name: 'Handloom Cotton Sarong',
+        images: ['/images/Handloom Cotton Sarong - Mint Green and Dark Teal Checks.jpeg'],
+        description: 'Handloom Cotton Sarong. Hand-woven with premium cotton for superior comfort and style. Code: Mint Green and Dark Teal Checks',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 44,
+        stock: 14,
+        ratings: 4.5,
+        numReviews: 28
+    },
+    {
+        name: 'Handloom Cotton Sarong - Pale Mint Green with Teal',
+        images: ['/images/Handloom Cotton Sarong - Pale Mint Green with Teal - ICS 241905.jpeg'],
+        description: 'Handloom Cotton Sarong - Pale Mint Green with Teal. Hand-woven with premium cotton for superior comfort and style. Code: ICS 241905',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 44,
+        stock: 18,
+        ratings: 4.5,
+        numReviews: 26
+    },
+    {
+        name: 'Handloom Cotton Sarong - Peach Pink and Dark Sky Blue with Charcoal Grey',
+        images: ['/images/Handloom Cotton Sarong - Peach Pink and Dark Sky Blue with Charcoal Grey - ICS 131026.jpeg'],
+        description: 'Handloom Cotton Sarong - Peach Pink and Dark Sky Blue with Charcoal Grey. Hand-woven with premium cotton for superior comfort and style. Code: ICS 131026',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 63,
+        stock: 7,
+        ratings: 4.5,
+        numReviews: 19
+    },
+    {
+        name: 'Handloom Cotton Sarong - Peacock Blue Silver and Black with Cream Bottom Border',
+        images: ['/images/Handloom Cotton Sarong - Peacock Blue Silver and Black with Cream Bottom Border - ICS 279187.jpeg'],
+        description: 'Handloom Cotton Sarong - Peacock Blue Silver and Black with Cream Bottom Border. Hand-woven with premium cotton for superior comfort and style. Code: ICS 279187',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 35,
+        stock: 7,
+        ratings: 4.5,
+        numReviews: 16
+    },
+    {
+        name: 'Handloom Cotton Sarong - Peacock Blue with Cream Bottom Border',
+        images: ['/images/Handloom Cotton Sarong - Peacock Blue with Cream Bottom Border - ICS 943930.jpeg'],
+        description: 'Handloom Cotton Sarong - Peacock Blue with Cream Bottom Border. Hand-woven with premium cotton for superior comfort and style. Code: ICS 943930',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 59,
+        stock: 6,
+        ratings: 4.5,
+        numReviews: 29
+    },
+    {
+        name: 'Handloom Cotton Sarong - Silver Dark Navy Blue and Dark Green with Beige',
+        images: ['/images/Handloom Cotton Sarong - Silver Dark Navy Blue and Dark Green with Beige - ICS 270081.jpeg'],
+        description: 'Handloom Cotton Sarong - Silver Dark Navy Blue and Dark Green with Beige. Hand-woven with premium cotton for superior comfort and style. Code: ICS 270081',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 49,
+        stock: 16,
+        ratings: 4.5,
+        numReviews: 5
+    },
+    {
+        name: 'Handloom Cotton Sarong',
+        images: ['/images/Handloom Cotton Sarong - Silver Stripe in Black and Golden Yellow.jpeg'],
+        description: 'Handloom Cotton Sarong. Hand-woven with premium cotton for superior comfort and style. Code: Silver Stripe in Black and Golden Yellow',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 58,
+        stock: 13,
+        ratings: 4.5,
+        numReviews: 26
+    },
+    {
+        name: 'Handloom Cotton Sarong - Sky Blue and White with Peach Pink',
+        images: ['/images/Handloom Cotton Sarong - Sky Blue and White with Peach Pink - ICS 778923.jpeg'],
+        description: 'Handloom Cotton Sarong - Sky Blue and White with Peach Pink. Hand-woven with premium cotton for superior comfort and style. Code: ICS 778923',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 39,
+        stock: 8,
+        ratings: 4.5,
+        numReviews: 12
+    },
+    {
+        name: 'Handloom Cotton Sarong - Sky Blue Charcoal Grey and White with Beige',
+        images: ['/images/Handloom Cotton Sarong - Sky Blue Charcoal Grey and White with Beige - ICS 456759.jpeg'],
+        description: 'Handloom Cotton Sarong - Sky Blue Charcoal Grey and White with Beige. Hand-woven with premium cotton for superior comfort and style. Code: ICS 456759',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 53,
+        stock: 7,
+        ratings: 4.5,
+        numReviews: 9
+    },
+    {
+        name: 'Handloom Cotton Sarong',
+        images: ['/images/Handloom Cotton Sarong - Sky Blue Magenta Pink and Deep Turquoise Bold Check Patterns.jpeg'],
+        description: 'Handloom Cotton Sarong. Hand-woven with premium cotton for superior comfort and style. Code: Sky Blue Magenta Pink and Deep Turquoise Bold Check Patterns',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 63,
+        stock: 10,
+        ratings: 4.5,
+        numReviews: 28
+    },
+    {
+        name: 'Handloom Cotton Sarong - The City Harbour',
+        images: ['/images/Handloom Cotton Sarong - The City Harbour - ICS 535658.jpeg'],
+        description: 'Handloom Cotton Sarong - The City Harbour. Hand-woven with premium cotton for superior comfort and style. Code: ICS 535658',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 40,
+        stock: 19,
+        ratings: 4.5,
+        numReviews: 14
+    },
+    {
+        name: 'Handloom Cotton Sarong - The Galle Fort Dusk',
+        images: ['/images/Handloom Cotton Sarong - The Galle Fort Dusk - ICS 548546.jpeg'],
+        description: 'Handloom Cotton Sarong - The Galle Fort Dusk. Hand-woven with premium cotton for superior comfort and style. Code: ICS 548546',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 62,
+        stock: 17,
+        ratings: 4.5,
+        numReviews: 22
+    },
+    {
+        name: 'Handloom Cotton Sarong - The Terra Dusk',
+        images: ['/images/Handloom Cotton Sarong - The Terra Dusk - ICS 378558.jpeg'],
+        description: 'Handloom Cotton Sarong - The Terra Dusk. Hand-woven with premium cotton for superior comfort and style. Code: ICS 378558',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 60,
+        stock: 6,
+        ratings: 4.5,
+        numReviews: 24
+    },
+    {
+        name: 'Handloom Cotton Sarong - White and Light Grey with Peacock Blue Stripes',
+        images: ['/images/Handloom Cotton Sarong - White and Light Grey with Peacock Blue Stripes - ICS 692914.jpeg'],
+        description: 'Handloom Cotton Sarong - White and Light Grey with Peacock Blue Stripes. Hand-woven with premium cotton for superior comfort and style. Code: ICS 692914',
+        brand: 'LoomPro',
+        category: 'Handloom',
+        price: 56,
+        stock: 14,
+        ratings: 4.5,
+        numReviews: 25
+    }
+];
+const importData = async () => {
+    try {
+        await Product_1.default.deleteMany();
+        await Product_1.default.insertMany(products);
+        console.log('Data Imported!');
+        process.exit();
+    }
+    catch (error) {
+        console.error(`${error}`);
+        process.exit(1);
+    }
+};
+importData();
+//# sourceMappingURL=seeder.js.map

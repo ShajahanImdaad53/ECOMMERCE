@@ -42,7 +42,7 @@ export default function LoginPage() {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="block w-full pl-11 pr-4 py-3 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
+                  className="block w-full pl-11 pr-4 py-3 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary transition-all"
                   placeholder="name@example.com"
                   required
                 />
@@ -59,7 +59,7 @@ export default function LoginPage() {
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="block w-full pl-11 pr-4 py-3 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
+                  className="block w-full pl-11 pr-4 py-3 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary transition-all"
                   placeholder="••••••••"
                   required
                 />
@@ -68,17 +68,17 @@ export default function LoginPage() {
 
             <div className="flex items-center justify-between">
               <label className="flex items-center">
-                <input type="checkbox" className="rounded border-zinc-300 text-indigo-600 focus:ring-indigo-500" />
+                <input type="checkbox" className="rounded border-zinc-300 text-primary focus:ring-primary" />
                 <span className="ml-2 text-sm text-zinc-600 dark:text-zinc-400">Remember me</span>
               </label>
-              <Link href="/forgot-password" opacity-50 className="text-sm font-medium text-indigo-600 hover:underline">
+              <Link href="/forgot-password" opacity-50 className="text-sm font-medium text-primary hover:underline">
                 Forgot password?
               </Link>
             </div>
 
             <button
               type="submit"
-              className="w-full bg-indigo-600 text-white font-bold py-3 rounded-xl flex items-center justify-center space-x-2 hover:bg-indigo-700 transition-all active:scale-[0.98]"
+              className="w-full bg-primary text-white font-bold py-3 rounded-xl flex items-center justify-center space-x-2 hover:bg-primary-hover transition-all active:scale-[0.98]"
             >
               <span>Sign In</span>
               <ArrowRight className="h-5 w-5" />
@@ -102,7 +102,7 @@ export default function LoginPage() {
 
           <p className="mt-8 text-center text-sm text-zinc-600 dark:text-zinc-400">
             Don&apos;t have an account?{' '}
-            <Link href="/register" className="font-bold text-indigo-600 hover:underline">
+            <Link href="/register" className="font-bold text-primary hover:underline">
               Create an account
             </Link>
           </p>

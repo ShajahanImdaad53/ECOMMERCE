@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import ProductCard from '../product/ProductCard';
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import api from '@/utils/api';
 import { ChevronRight, Flame } from 'lucide-react';
 
@@ -62,10 +63,10 @@ export default function FeaturedProducts() {
                   <span className="bg-zinc-800 text-white px-2 py-1 rounded text-xs font-bold">08</span>
                 </div>
              </div>
-             <button className="flex items-center space-x-1 px-6 py-2 border-2 border-primary text-primary font-bold rounded-md hover:bg-primary hover:text-white transition-all group">
+             <Link href="/shop" className="flex items-center space-x-1 px-6 py-2 border-2 border-primary text-primary font-bold rounded-md hover:bg-primary hover:text-white transition-all group">
                 <span>SHOP MORE</span>
                 <ChevronRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
-             </button>
+             </Link>
           </div>
         </div>
 

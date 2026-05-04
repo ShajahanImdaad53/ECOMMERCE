@@ -12,7 +12,7 @@ const SLIDES = [
     title: "Premium Handloom Collection",
     subtitle: "Authentic Sri Lankan Heritage",
     description: "Experience the comfort of pure cotton and silk, handcrafted by master artisans.",
-    image: "/premium_hero_sarong.png",
+    image: "/images/premium_hero_sarong.png",
     color: "from-orange-500 to-red-600",
     buttonText: "Shop Now"
   },
@@ -21,7 +21,7 @@ const SLIDES = [
     title: "New Summer Arrivals",
     subtitle: "Vibrant & Breathable",
     description: "Stay cool this summer with our latest collection of lightweight handloom shirts.",
-    image: "/shirt_1.png",
+    image: "/images/shirt_1.png",
     color: "from-blue-500 to-indigo-600",
     buttonText: "Explore Collection"
   },
@@ -30,7 +30,7 @@ const SLIDES = [
     title: "Exclusive Flash Sale",
     subtitle: "Limited Time Offer",
     description: "Get up to 50% off on selected handloom products. Hurry, while stocks last!",
-    image: "/sarong_1.png",
+    image: "/images/sarong_1.png",
     color: "from-purple-500 to-pink-600",
     buttonText: "Grab Deals"
   }

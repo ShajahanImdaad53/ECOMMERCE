@@ -46,14 +46,14 @@ export default function ProductDetails() {
 
   if (loading) return (
     <div className="min-h-screen flex items-center justify-center">
-      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
+      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-primary"></div>
     </div>
   );
 
   if (!product) return (
     <div className="min-h-screen flex flex-col items-center justify-center">
       <h2 className="text-2xl font-bold">Product not found</h2>
-      <Link href="/" className="mt-4 text-indigo-600">Back to Shop</Link>
+      <Link href="/" className="mt-4 text-primary">Back to Shop</Link>
     </div>
   );
 
@@ -72,7 +72,7 @@ export default function ProductDetails() {
       <Navbar />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <Link href="/" className="flex items-center text-sm text-zinc-500 hover:text-indigo-600 mb-8">
+        <Link href="/" className="flex items-center text-sm text-zinc-500 hover:text-primary mb-8">
           <ArrowLeft className="h-4 w-4 mr-2" />
           Back to Results
         </Link>

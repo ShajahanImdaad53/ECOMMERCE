@@ -94,7 +94,7 @@ export default function Home() {
                className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-orange-400/20 rounded-full blur-3xl" 
              />
              
-             <h2 className="text-4xl md:text-6xl font-black text-white relative z-10 tracking-tight leading-tight">JOIN THE <br/>DARAZ CLUB</h2>
+             <h2 className="text-4xl md:text-6xl font-black text-white relative z-10 tracking-tight leading-tight">JOIN THE <br/>LOOMPRO CLUB</h2>
              <p className="mt-6 text-xl text-orange-50-white relative z-10 max-w-xl mx-auto font-medium opacity-90 text-white">
                Get 20% off your first order and stay ahead with exclusive trends.
              </p>

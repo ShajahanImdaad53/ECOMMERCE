@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Facebook, Instagram, Twitter, Youtube, Mail, Phone, MapPin } from 'lucide-react';
+import { Globe, Share2, MessageSquare, Play, Mail, Phone, MapPin } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -11,23 +11,23 @@ export default function Footer() {
           <div>
             <h3 className="text-primary font-bold text-lg mb-6">Customer Care</h3>
             <ul className="space-y-3">
-              <li><Link href="#" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-primary transition-colors">Help Center</Link></li>
-              <li><Link href="#" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-primary transition-colors">How to Buy</Link></li>
-              <li><Link href="#" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-primary transition-colors">Returns & Refunds</Link></li>
-              <li><Link href="#" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-primary transition-colors">Contact Us</Link></li>
-              <li><Link href="#" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-primary transition-colors">Terms & Conditions</Link></li>
+              <li><Link href="/help" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-primary transition-colors">Help Center</Link></li>
+              <li><Link href="/shop" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-primary transition-colors">How to Buy</Link></li>
+              <li><Link href="/returns" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-primary transition-colors">Returns & Refunds</Link></li>
+              <li><Link href="/contact" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-primary transition-colors">Contact Us</Link></li>
+              <li><Link href="/terms" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-primary transition-colors">Terms & Conditions</Link></li>
             </ul>
           </div>
 
-          {/* Daraz Clone */}
+          {/* LoomPro */}
           <div>
-            <h3 className="text-primary font-bold text-lg mb-6">Daraz Clone</h3>
+            <h3 className="text-primary font-bold text-lg mb-6">LoomPro</h3>
             <ul className="space-y-3">
-              <li><Link href="#" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-primary transition-colors">About Daraz Clone</Link></li>
+              <li><Link href="/about" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-primary transition-colors">About LoomPro</Link></li>
               <li><Link href="#" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-primary transition-colors">Digital Payments</Link></li>
-              <li><Link href="#" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-primary transition-colors">Daraz Donates</Link></li>
-              <li><Link href="#" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-primary transition-colors">Daraz Blog</Link></li>
-              <li><Link href="#" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-primary transition-colors">Join the Daraz Affiliate Program</Link></li>
+              <li><Link href="#" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-primary transition-colors">LoomPro Donates</Link></li>
+              <li><Link href="#" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-primary transition-colors">LoomPro Blog</Link></li>
+              <li><Link href="#" className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-primary transition-colors">Join the LoomPro Affiliate Program</Link></li>
             </ul>
           </div>
 
@@ -45,7 +45,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-primary" />
-                <span className="text-sm text-zinc-600 dark:text-zinc-400">support@darazclone.lk</span>
+                <span className="text-sm text-zinc-600 dark:text-zinc-400">support@loompro.lk</span>
               </li>
             </ul>
           </div>
@@ -55,16 +55,16 @@ export default function Footer() {
             <h3 className="text-primary font-bold text-lg mb-6">Follow Us</h3>
             <div className="flex space-x-4 mb-8">
               <Link href="#" className="p-2 bg-white dark:bg-zinc-900 rounded-full shadow-sm hover:text-primary transition-all hover:scale-110">
-                <Facebook className="h-5 w-5" />
+                <Globe className="h-5 w-5" />
               </Link>
               <Link href="#" className="p-2 bg-white dark:bg-zinc-900 rounded-full shadow-sm hover:text-primary transition-all hover:scale-110">
-                <Instagram className="h-5 w-5" />
+                <Share2 className="h-5 w-5" />
               </Link>
               <Link href="#" className="p-2 bg-white dark:bg-zinc-900 rounded-full shadow-sm hover:text-primary transition-all hover:scale-110">
-                <Twitter className="h-5 w-5" />
+                <MessageSquare className="h-5 w-5" />
               </Link>
               <Link href="#" className="p-2 bg-white dark:bg-zinc-900 rounded-full shadow-sm hover:text-primary transition-all hover:scale-110">
-                <Youtube className="h-5 w-5" />
+                <Play className="h-5 w-5" />
               </Link>
             </div>
             <h3 className="text-primary font-bold text-lg mb-4">Newsletter</h3>
@@ -85,7 +85,7 @@ export default function Footer() {
         <div className="pt-8 border-t border-zinc-200 dark:border-zinc-800">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-sm text-zinc-500 dark:text-zinc-500">
-              © {new Date().getFullYear()} <span className="font-bold text-primary">DARAZ.CLONE</span>. All rights reserved.
+              © {new Date().getFullYear()} <span className="font-bold text-primary">LOOMPRO</span>. All rights reserved.
             </div>
             <div className="flex items-center space-x-6">
               <img src="https://img.icons8.com/color/48/000000/visa.png" alt="Visa" className="h-8 grayscale hover:grayscale-0 transition-all" />
@@ -99,5 +99,4 @@ export default function Footer() {
     </footer>
   );
 }
-  );
-}
+

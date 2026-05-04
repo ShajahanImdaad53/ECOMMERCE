@@ -38,8 +38,8 @@ export default function DealsPage() {
       
       {/* Animated Hero Banner */}
       <section className="relative pt-32 pb-24 overflow-hidden">
-        <div className="absolute inset-0 bg-indigo-600 -z-10">
-          <div className="absolute inset-0 bg-gradient-to-br from-indigo-700 via-indigo-600 to-violet-600 opacity-90" />
+        <div className="absolute inset-0 bg-primary -z-10">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-hover via-primary to-orange-400 opacity-90" />
           <motion.div 
             animate={{ 
               scale: [1, 1.1, 1],
@@ -97,16 +97,16 @@ export default function DealsPage() {
               {[ {l: 'HRS', v: '08'}, {l: 'MIN', v: '42'}, {l: 'SEC', v: '15'} ].map((t, i) => (
                 <div key={i} className="flex flex-col items-center">
                   <div className="w-20 h-20 bg-zinc-100 dark:bg-zinc-800 rounded-2xl flex items-center justify-center mb-2">
-                    <span className="text-3xl font-black text-indigo-600">{t.v}</span>
+                    <span className="text-3xl font-black text-primary">{t.v}</span>
                   </div>
                   <span className="text-[10px] font-bold text-zinc-400 tracking-widest uppercase">{t.l}</span>
                 </div>
               ))}
             </div>
 
-            <button className="px-10 py-5 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-bold rounded-full hover:bg-indigo-600 dark:hover:bg-indigo-600 dark:hover:text-white transition-all shadow-xl shadow-indigo-500/10 active:scale-95">
+            <Link href="/shop" className="px-10 py-5 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-bold rounded-full hover:bg-primary transition-all shadow-xl shadow-primary/10 active:scale-95 text-center">
               View All Flash Deals
-            </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -158,14 +158,14 @@ export default function DealsPage() {
             whileHover={{ scale: 1.01 }}
             className="bg-zinc-900 dark:bg-zinc-100 rounded-[3rem] p-16 flex flex-col md:flex-row items-center justify-between relative overflow-hidden"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-indigo-600/20 to-transparent -z-10" />
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent -z-10" />
             <div className="relative z-10">
-              <span className="text-indigo-600 dark:text-indigo-600 font-bold uppercase tracking-[0.3em] text-sm">Exclusive Bonus</span>
+              <span className="text-primary font-bold uppercase tracking-[0.3em] text-sm">Exclusive Bonus</span>
               <h2 className="text-4xl md:text-5xl font-black text-white dark:text-zinc-900 mt-4 max-w-xl leading-tight">
-                Get an extra 15% off with code <span className="text-indigo-600">PREMIUM15</span>
+                Get an extra 15% off with code <span className="text-primary">PREMIUM15</span>
               </h2>
             </div>
-            <button className="mt-8 md:mt-0 px-12 py-6 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white font-black rounded-full hover:bg-indigo-600 dark:hover:bg-indigo-600 dark:hover:text-white transition-all shadow-2xl active:scale-95">
+            <button className="mt-8 md:mt-0 px-12 py-6 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white font-black rounded-full hover:bg-primary transition-all shadow-2xl active:scale-95">
               Redeem Now
             </button>
           </motion.div>

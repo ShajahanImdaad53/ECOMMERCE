@@ -27,7 +27,7 @@ export default function CartPage() {
             <p className="mt-2 text-zinc-500 max-w-sm">Looks like you haven&apos;t added anything to your cart yet. Explore our products and find something you love!</p>
             <Link 
               href="/" 
-              className="mt-8 px-8 py-3 bg-indigo-600 text-white font-bold rounded-full hover:bg-indigo-700 transition-colors"
+              className="mt-8 px-8 py-3 bg-primary text-white font-bold rounded-full hover:bg-primary-hover transition-colors"
             >
               Start Shopping
             </Link>
@@ -75,7 +75,7 @@ export default function CartPage() {
                             <Plus className="h-3 w-3" />
                           </button>
                         </div>
-                        <span className="font-bold text-zinc-900 dark:text-white">${(item.price * item.quantity).toFixed(2)}</span>
+                        <span className="font-bold text-zinc-900 dark:text-white">Rs. {item.price * item.quantity}</span>
                       </div>
                     </div>
                   </motion.div>
@@ -90,7 +90,7 @@ export default function CartPage() {
                 <div className="space-y-4">
                   <div className="flex justify-between text-zinc-600 dark:text-zinc-400">
                     <span>Subtotal</span>
-                    <span className="font-semibold text-zinc-900 dark:text-white">${getTotalPrice().toFixed(2)}</span>
+                    <span className="font-semibold text-zinc-900 dark:text-white">Rs. {getTotalPrice()}</span>
                   </div>
                   <div className="flex justify-between text-zinc-600 dark:text-zinc-400">
                     <span>Shipping</span>
@@ -98,14 +98,14 @@ export default function CartPage() {
                   </div>
                   <div className="flex justify-between text-zinc-600 dark:text-zinc-400">
                     <span>Tax</span>
-                    <span className="font-semibold text-zinc-900 dark:text-white">$0.00</span>
+                    <span className="font-semibold text-zinc-900 dark:text-white">Rs. 0.00</span>
                   </div>
                   <div className="pt-4 border-t border-zinc-200 dark:border-zinc-800 flex justify-between items-center">
                     <span className="text-lg font-bold text-zinc-900 dark:text-white">Total</span>
-                    <span className="text-2xl font-bold text-indigo-600">${getTotalPrice().toFixed(2)}</span>
+                    <span className="text-2xl font-bold text-primary">Rs. {getTotalPrice()}</span>
                   </div>
                 </div>
-                <button className="w-full mt-8 bg-indigo-600 text-white font-bold py-4 rounded-full flex items-center justify-center space-x-2 hover:bg-indigo-700 transition-all hover:scale-[1.02] active:scale-95 shadow-lg shadow-indigo-500/25">
+                <button className="w-full mt-8 bg-primary text-white font-bold py-4 rounded-full flex items-center justify-center space-x-2 hover:bg-primary-hover transition-all hover:scale-[1.02] active:scale-95 shadow-lg shadow-primary/25">
                   <span>Checkout</span>
                   <ArrowRight className="h-5 w-5" />
                 </button>

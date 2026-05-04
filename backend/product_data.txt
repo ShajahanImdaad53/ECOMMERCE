@@ -1,14 +1,4 @@
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-import Product from './models/Product';
-
-dotenv.config();
-
-const mongoUri = process.env.MONGO_URI || 'mongodb://localhost:27017/ecommerce';
-mongoose.connect(mongoUri);
-
-const products = [
-  {
+﻿  {
     name: 'Handloom Cotton Puni Sarong - Deep Burgundy with White Royal Blue and Red Stripes Multi Color Bottom Border',
     images: ['/images/Handloom Cotton Puni Sarong - Deep Burgundy with White Royal Blue and Red Stripes Multi Color Bottom Border - ICS 149349.jpeg'],
     description: 'Handloom Cotton Puni Sarong - Deep Burgundy with White Royal Blue and Red Stripes Multi Color Bottom Border. Hand-woven with premium cotton for superior comfort and style. Code: ICS 149349',
@@ -405,6 +395,39 @@ const products = [
     numReviews: 27
   },
   {
+    name: 'Handloom Cotton Sarong',
+    images: ['/images/Handloom Cotton Sarong - ICS 272573.jpeg'],
+    description: 'Handloom Cotton Sarong. Hand-woven with premium cotton for superior comfort and style. Code: ICS 272573',
+    brand: 'LoomPro',
+    category: 'Handloom',
+    price: 62,
+    stock: 14,
+    ratings: 4.5,
+    numReviews: 25
+  },
+  {
+    name: 'Handloom Cotton Sarong',
+    images: ['/images/Handloom Cotton Sarong - ICS 468098.jpeg'],
+    description: 'Handloom Cotton Sarong. Hand-woven with premium cotton for superior comfort and style. Code: ICS 468098',
+    brand: 'LoomPro',
+    category: 'Handloom',
+    price: 38,
+    stock: 15,
+    ratings: 4.5,
+    numReviews: 23
+  },
+  {
+    name: 'Handloom Cotton Sarong',
+    images: ['/images/Handloom Cotton Sarong - ICS 529800.jpeg'],
+    description: 'Handloom Cotton Sarong. Hand-woven with premium cotton for superior comfort and style. Code: ICS 529800',
+    brand: 'LoomPro',
+    category: 'Handloom',
+    price: 47,
+    stock: 9,
+    ratings: 4.5,
+    numReviews: 14
+  },
+  {
     name: 'Handloom Cotton Sarong - Light Blue Plain',
     images: ['/images/Handloom Cotton Sarong - Light Blue Plain - ICS 738244.jpeg'],
     description: 'Handloom Cotton Sarong - Light Blue Plain. Hand-woven with premium cotton for superior comfort and style. Code: ICS 738244',
@@ -656,21 +679,4 @@ const products = [
     stock: 14,
     ratings: 4.5,
     numReviews: 25
-  }
-];
-
-
-const importData = async () => {
-  try {
-    await Product.deleteMany();
-    await Product.insertMany(products);
-
-    console.log('Data Imported!');
-    process.exit();
-  } catch (error) {
-    console.error(`${error}`);
-    process.exit(1);
-  }
-};
-
-importData();
+  },

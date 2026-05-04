@@ -21,13 +21,13 @@ export default function Navbar() {
 
   return (
     <header className="w-full z-50">
-      {/* Top Bar - Daraz Style */}
+      {/* Top Bar - LoomPro Style */}
       <div className="bg-primary py-1 px-4 text-white text-[11px] font-medium">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-4">
             <Link href="#" className="hover:underline">SAVE MORE ON APP</Link>
             <Link href="#" className="hover:underline">BECOME A SELLER</Link>
-            <Link href="#" className="hover:underline">HELP & SUPPORT</Link>
+            <Link href="/help" className="hover:underline">HELP & SUPPORT</Link>
           </div>
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-1 cursor-pointer">
@@ -35,7 +35,7 @@ export default function Navbar() {
               <span>ENGLISH</span>
             </div>
             <Link href="/login" className="hover:underline">LOGIN</Link>
-            <Link href="/signup" className="hover:underline">SIGNUP</Link>
+            <Link href="/register" className="hover:underline">SIGNUP</Link>
           </div>
         </div>
       </div>
@@ -52,17 +52,17 @@ export default function Navbar() {
                 <div className="absolute inset-0 flex items-center justify-center text-white font-bold text-xl">D</div>
               </div>
               <span className="text-2xl font-black tracking-tighter text-primary dark:text-white">
-                DARAZ<span className="text-zinc-900 dark:text-primary">.CLONE</span>
+                LOOM<span className="text-zinc-900 dark:text-primary">PRO</span>
               </span>
             </Link>
 
-            {/* Search Bar - Daraz Style */}
+            {/* Search Bar - LoomPro Style */}
             <div className="hidden md:flex flex-1 items-center">
               <div className="flex w-full bg-zinc-100 dark:bg-zinc-900 rounded-md overflow-hidden group focus-within:ring-2 ring-primary/20 transition-all">
                 <input
                   type="text"
                   className="flex-1 px-4 py-2.5 bg-transparent border-none focus:outline-none text-sm placeholder:text-zinc-400"
-                  placeholder="Search in Daraz..."
+                  placeholder="Search in LoomPro..."
                 />
                 <button className="bg-primary hover:bg-primary-hover text-white px-6 py-2.5 transition-colors group-hover:px-8 duration-300">
                   <Search className="h-5 w-5" />
@@ -143,7 +143,7 @@ export default function Navbar() {
                   <input
                     type="text"
                     className="flex-1 px-4 py-2 bg-transparent focus:outline-none text-sm"
-                    placeholder="Search in Daraz..."
+                    placeholder="Search in LoomPro..."
                   />
                   <button className="bg-primary text-white px-4 py-2">
                     <Search className="h-5 w-5" />
@@ -163,5 +163,4 @@ export default function Navbar() {
     </header>
   );
 }
-  );
-}
+

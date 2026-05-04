@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import productRoutes from './routes/productRoutes';
+import authRoutes from './routes/authRoutes';
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ app.use(express.json());
 
 // Routes
 app.use('/api/products', productRoutes);
+app.use('/api/auth', authRoutes);
 
 // Basic Route
 app.get('/', (req, res) => {
