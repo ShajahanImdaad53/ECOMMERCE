@@ -79,12 +79,12 @@ export default function ChatBot() {
       };
 
       setMessages((prev) => [...prev, botMessage]);
-    } catch (error) {
+    } catch (error: any) {
       console.error("Chat error:", error);
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: "bot",
-        content: "Oops! Something went wrong. Please check your connection or try again later.",
+        content: error.message || "Oops! Something went wrong. Please check your connection or try again later.",
         timestamp: new Date(),
       };
       setMessages((prev) => [...prev, errorMessage]);
