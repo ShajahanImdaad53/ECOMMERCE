@@ -14,9 +14,11 @@ export default function FeaturedProducts() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const { data } = await api.get('products');
+        const response = await api.get('products');
+        const data = response.data;
+        const productsData = Array.isArray(data) ? data : (data.products || []);
         // Add dummy discount for demo if not present
-        const dataWithDiscounts = data.map((p: any) => ({
+        const dataWithDiscounts = productsData.map((p: any) => ({
           ...p,
           discount: p.discount || Math.floor(Math.random() * 30) + 10
         }));

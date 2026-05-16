@@ -16,8 +16,9 @@ export default function NewArrivalsPage() {
     const fetchNew = async () => {
       try {
         const { data } = await api.get('products');
+        const productsData = Array.isArray(data) ? data : (data.products || []);
         // Simulate new arrivals by taking the last 12 products
-        setProducts(data.slice(-12).reverse());
+        setProducts(productsData.slice(-12).reverse());
       } catch (error) {
         console.error('Error fetching new arrivals:', error);
       } finally {

@@ -16,8 +16,9 @@ export default function TopProductsPage() {
     const fetchTop = async () => {
       try {
         const { data } = await api.get('products');
+        const productsData = Array.isArray(data) ? data : (data.products || []);
         // Sort by ratings
-        const sorted = [...data].sort((a, b) => b.ratings - a.ratings);
+        const sorted = [...productsData].sort((a, b) => b.ratings - a.ratings);
         setProducts(sorted.slice(0, 12));
       } catch (error) {
         console.error('Error fetching top products:', error);

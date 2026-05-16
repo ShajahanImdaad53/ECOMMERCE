@@ -22,8 +22,9 @@ export default function ShopPage() {
     const fetchProducts = async () => {
       try {
         const { data } = await api.get('products');
-        setProducts(data);
-        setFilteredProducts(data);
+        const productsData = Array.isArray(data) ? data : (data.products || []);
+        setProducts(productsData);
+        setFilteredProducts(productsData);
       } catch (error) {
         console.error('Error fetching products:', error);
       } finally {

@@ -17,8 +17,9 @@ export default function DealsPage() {
     const fetchDeals = async () => {
       try {
         const { data } = await api.get('products');
+        const productsData = Array.isArray(data) ? data : (data.products || []);
         // Simulate deals by picking a few products and adding a "deal" property
-        const deals = data.slice(0, 4).map((p: any) => ({
+        const deals = productsData.slice(0, 4).map((p: any) => ({
           ...p,
           isDeal: true,
           discount: Math.floor(Math.random() * 20) + 10
