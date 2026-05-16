@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:all": "concurrently \"npm run dev\" \"cd backend && npm run dev\"",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
@@ -25,13 +26,14 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "concurrently": "^9.2.1",
     "eslint": "^9",
     "eslint-config-next": "16.2.4",
     "tailwindcss": "^4",
     "typescript": "^5"
   },
   "optionalDependencies": {
-    "lightningcss-linux-x64-gnu": "1.29.1",
-    "@tailwindcss/oxide-linux-x64-gnu": "4.0.0"
+    "@tailwindcss/oxide-linux-x64-gnu": "4.0.0",
+    "lightningcss-linux-x64-gnu": "1.29.1"
   }
 }
