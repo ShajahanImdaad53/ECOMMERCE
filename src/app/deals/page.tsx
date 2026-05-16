@@ -16,7 +16,7 @@ export default function DealsPage() {
   useEffect(() => {
     const fetchDeals = async () => {
       try {
-        const { data } = await api.get('/products');
+        const { data } = await api.get('products');
         // Simulate deals by picking a few products and adding a "deal" property
         const deals = data.slice(0, 4).map((p: any) => ({
           ...p,

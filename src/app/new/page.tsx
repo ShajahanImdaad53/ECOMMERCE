@@ -15,7 +15,7 @@ export default function NewArrivalsPage() {
   useEffect(() => {
     const fetchNew = async () => {
       try {
-        const { data } = await api.get('/products');
+        const { data } = await api.get('products');
         // Simulate new arrivals by taking the last 12 products
         setProducts(data.slice(-12).reverse());
       } catch (error) {

@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCartStore } from '@/store/useCartStore';
 import Image from 'next/image';
+import { useAuthStore } from '@/store/useAuthStore';
 
 export default function Navbar() {
   const { theme, setTheme } = useTheme();
@@ -15,6 +16,8 @@ export default function Navbar() {
   const cartItems = useCartStore((state) => state.items);
   const cartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
+  const { user, logout } = useAuthStore();
+
   useEffect(() => setMounted(true), []);
 
   if (!mounted) return null;
@@ -22,20 +25,35 @@ export default function Navbar() {
   return (
     <header className="w-full z-50">
       {/* Top Bar - LoomPro Style */}
-      <div className="bg-primary py-1 px-4 text-white text-[11px] font-medium">
+      <div className="bg-primary py-1 px-4 text-white text-[11px] font-medium transition-colors">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div className="flex items-center space-x-4">
-            <Link href="#" className="hover:underline">SAVE MORE ON APP</Link>
-            <Link href="#" className="hover:underline">BECOME A SELLER</Link>
-            <Link href="/help" className="hover:underline">HELP & SUPPORT</Link>
+          <div className="hidden sm:flex items-center space-x-4">
+            <Link href="#" className="hover:text-zinc-200 transition-colors">SAVE MORE ON APP</Link>
+            <Link href="#" className="hover:text-zinc-200 transition-colors">BECOME A SELLER</Link>
+            <Link href="/help" className="hover:text-zinc-200 transition-colors">HELP & SUPPORT</Link>
           </div>
-          <div className="flex items-center space-x-4">
-            <div className="flex items-center space-x-1 cursor-pointer">
+          <div className="flex items-center space-x-6 ml-auto sm:ml-0">
+            <div className="flex items-center space-x-1 cursor-pointer hover:text-zinc-200 transition-colors">
               <Globe className="h-3 w-3" />
               <span>ENGLISH</span>
             </div>
-            <Link href="/login" className="hover:underline">LOGIN</Link>
-            <Link href="/register" className="hover:underline">SIGNUP</Link>
+            
+            {user ? (
+              <div className="flex items-center space-x-4">
+                <span className="font-bold uppercase tracking-tight">HI, {user.name.split(' ')[0]}</span>
+                <button 
+                  onClick={logout}
+                  className="hover:text-zinc-200 font-bold uppercase cursor-pointer"
+                >
+                  LOGOUT
+                </button>
+              </div>
+            ) : (
+              <>
+                <Link href="/login" className="hover:text-zinc-200 font-bold uppercase">LOGIN</Link>
+                <Link href="/register" className="hover:text-zinc-200 font-bold uppercase">SIGNUP</Link>
+              </>
+            )}
           </div>
         </div>
       </div>

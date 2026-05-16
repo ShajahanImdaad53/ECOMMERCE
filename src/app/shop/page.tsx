@@ -21,7 +21,7 @@ export default function ShopPage() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const { data } = await api.get('/products');
+        const { data } = await api.get('products');
         setProducts(data);
         setFilteredProducts(data);
       } catch (error) {

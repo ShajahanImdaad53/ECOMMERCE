@@ -14,7 +14,7 @@ export default function FeaturedProducts() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const { data } = await api.get('/products');
+        const { data } = await api.get('products');
         // Add dummy discount for demo if not present
         const dataWithDiscounts = data.map((p: any) => ({
           ...p,

@@ -15,7 +15,7 @@ export default function TopProductsPage() {
   useEffect(() => {
     const fetchTop = async () => {
       try {
-        const { data } = await api.get('/products');
+        const { data } = await api.get('products');
         // Sort by ratings
         const sorted = [...data].sort((a, b) => b.ratings - a.ratings);
         setProducts(sorted.slice(0, 12));
