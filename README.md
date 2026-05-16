@@ -1,45 +1,49 @@
-# <img src="frontend/public/logo.png" width="40" height="40" valign="middle"> Premium E-Commerce Application
+# <img src="public/logo.png" width="40" height="40" valign="middle"> LoomPro | Premium Handloom E-Commerce
 
-![Banner](frontend/public/images/banner.png)
+![LoomPro Banner](public/images/premium_hero_sarong.png)
 
 ## 🌟 Overview
-Experience the future of online shopping with our **Premium E-Commerce Platform**. This is a production-grade, full-stack application designed with a focus on high performance, modern aesthetics (Flipkart/Myntra style), and seamless user experience.
+**LoomPro** is a state-of-the-art, full-stack e-commerce platform dedicated to premium handloom excellence. Built with the latest 2026 web technologies, it combines traditional craftsmanship with a high-performance digital experience.
 
 [**🚀 Live Demo**](https://ecommerce-shajahan.vercel.app) | [**📁 Backend API**](https://ecommerce-shajahan.vercel.app/api)
+
+---
+
+## 🤖 New Feature: Loomy AI Assistant
+We've integrated a powerful **AI Chatbot** powered by **Google Gemini 2.0**. Loomy helps customers find the perfect handloom products, answers questions about craftsmanship, and provides instant support.
 
 ---
 
 ## 🛠️ Tech Stack
 
 <p align="left">
-  <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js" />
-  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
+  <img src="https://img.shields.io/badge/Next.js_16-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS_4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/Gemini_AI_2.0-4285F4?style=for-the-badge&logo=google-gemini&logoColor=white" alt="Gemini AI" />
   <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js" />
-  <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" alt="Express.js" />
   <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB" />
   <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
-  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
   <img src="https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white" alt="Framer Motion" />
 </p>
 
 ---
 
-## ✨ Features
+## ✨ Key Features
 
-- **💎 Premium UI/UX**: Ultra-modern design with glassmorphism and smooth animations.
-- **🌗 Dark/Light Mode**: Fully dynamic theme switching with `next-themes`.
-- **🛒 Smart Cart**: Persistent shopping cart with real-time price calculations.
-- **🔍 Instant Search**: Fast, debounced search for products.
-- **📱 Responsive**: Optimized for all devices from mobile to desktop.
-- **⚡ Performance**: Next.js 16 with Turbopack for lightning-fast loads.
+- **🤖 AI Concierge**: Real-time assistance powered by Gemini 2.0.
+- **💎 Premium UI/UX**: Modern glassmorphic design with ultra-smooth animations.
+- **🌗 Dual-Theme System**: Sleek light and dark modes optimized for premium aesthetics.
+- **🛒 High-Performance Cart**: Real-time state management using Zustand.
+- **⚡ Turbopack Powered**: Lightning-fast build and load times using Next.js 16.
+- **📱 Mobile-First**: Fully responsive design for the ultimate shopping experience on the go.
 
 ---
 
-## 📸 Product Gallery
+## 📸 Product Showroom
 
-| Airpods | iPhone | DSLR Camera | PS5 |
+| Silk Collection | Premium Sarongs | Handloom Art | Traditional Wear |
 | :---: | :---: | :---: | :---: |
-| ![Airpods](frontend/public/images/airpods.png) | ![Phone](frontend/public/images/phone.png) | ![Camera](frontend/public/images/camera.png) | ![Playstation](frontend/public/images/playstation.png) |
+| ![Sarong 1](public/images/sarong_1.png) | ![Sarong 2](public/images/sarong_2.png) | ![Sarong 3](public/images/Sarong1.jpeg) | ![Sarong 4](public/images/Sarong5.jpeg) |
 
 ---
 
@@ -47,62 +51,47 @@ Experience the future of online shopping with our **Premium E-Commerce Platform*
 
 ```bash
 .
-├── backend/            # Node.js Express API
-│   ├── api/            # Serverless entry point (for Vercel)
-│   ├── src/            # Models, Controllers, Routes
-│   └── src/seeder.ts   # Database Seeding Tool
-├── frontend/           # Next.js Application
-│   ├── src/app/        # Modern App Router
-│   ├── src/components/ # Premium UI Components
-│   ├── src/store/      # Zustand State Management
-│   └── public/images/  # High-res product assets
-└── vercel.json         # Unified Deployment Config
+├── public/             # Global Static Assets (Optimized for Vercel)
+├── backend/            # Express.js API & AI Logic
+│   ├── src/routes/     # API & Chatbot Routes
+│   └── src/index.ts    # Server Entry Point
+├── frontend/           # Next.js 16 Application
+│   ├── src/app/        # App Router & API Handlers
+│   └── src/components/ # ChatBot & UI Components
+└── vercel.json         # Modern Unified Deployment Config
 ```
 
 ---
 
 ## 🚀 Getting Started
 
-### 1️⃣ Clone the repository
-```bash
-git clone https://github.com/ShajahanImdaad53/ECOMMERCE.git
-cd ECOMMERCE
+### 1️⃣ Setup & Environment
+Clone the repo and add your keys to a `.env` file in the root:
+```env
+MONGO_URI=your_mongodb_uri
+JWT_SECRET=your_secret
+GEMINI_API_KEY=your_gemini_key
 ```
 
-### 2️⃣ Backend Setup
+### 2️⃣ Run Locally
 ```bash
-cd backend
+# Install root dependencies
 npm install
-# Configure your .env with MONGO_URI
-npm run dev
-```
 
-### 3️⃣ Frontend Setup
-```bash
-cd frontend
-npm install
+# Run both Frontend & Backend
 npm run dev
 ```
 
 ---
 
 ## ☁️ Deployment (Vercel)
-
-This project is pre-configured for **Vercel Monorepo** deployment.
-
-1.  **Import** the repository in Vercel.
-2.  **Environment Variables**:
-    *   `MONGO_URI`: Your MongoDB Atlas string.
-    *   `JWT_SECRET`: Your secret key.
-3.  **Deploy**: Vercel will automatically handle both the frontend and the serverless backend.
-
----
-
-## 📄 License
-Distributed under the MIT License. See `LICENSE` for more information.
+This project is optimized for the **Modern Vercel Pipeline**:
+1. Connect your GitHub repo to Vercel.
+2. Add your environment variables in the Vercel Dashboard.
+3. Deploy! Vercel handles the Next.js frontend and the Node.js functions automatically.
 
 ---
 
 <p align="center">
-  Built by <b>Imdaad Shajahan</b>
+  Crafted with ❤️ by <b>Imdaad Shajahan</b>
 </p>
