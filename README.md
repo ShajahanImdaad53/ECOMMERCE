@@ -1,6 +1,6 @@
 # <img src="public/logo.png" width="40" height="40" valign="middle"> LoomPro | Premium Handloom E-Commerce
 
-![LoomPro Banner](public/images/premium_hero_sarong.png)
+![LoomPro Home](public/screenshots/home_page.png)
 
 ## 🌟 Overview
 **LoomPro** is a state-of-the-art, full-stack e-commerce platform dedicated to premium handloom excellence. Built with the latest 2026 web technologies, it combines traditional craftsmanship with a high-performance digital experience.
@@ -9,8 +9,22 @@
 
 ---
 
-## 🤖 New Feature: Loomy AI Assistant
+## 🤖 AI Concierge: Loomy Assistant
 We've integrated a powerful **AI Chatbot** powered by **Google Gemini 2.0**. Loomy helps customers find the perfect handloom products, answers questions about craftsmanship, and provides instant support.
+
+![Loomy AI Chatbot](public/screenshots/chatbot.png)
+
+---
+
+## 📸 Application Screenshots
+
+### 🛒 Shop & Products
+Explore our diverse collection of premium handloom sarongs and traditional wear.
+![Shop Page](public/screenshots/shop_page.png)
+
+### 🔐 Secure Authentication
+Premium login and registration experience for a personalized shopping journey.
+![Login Page](public/screenshots/login_page.png)
 
 ---
 
@@ -39,26 +53,20 @@ We've integrated a powerful **AI Chatbot** powered by **Google Gemini 2.0**. Loo
 
 ---
 
-## 📸 Product Showroom
-
-| Silk Collection | Premium Sarongs | Handloom Art | Traditional Wear |
-| :---: | :---: | :---: | :---: |
-| ![Sarong 1](public/images/sarong_1.png) | ![Sarong 2](public/images/sarong_2.png) | ![Sarong 3](public/images/Sarong1.jpeg) | ![Sarong 4](public/images/Sarong5.jpeg) |
-
----
-
 ## 📂 Project Structure
 
 ```bash
 .
-├── public/             # Global Static Assets (Optimized for Vercel)
+├── src/                # Next.js 16 Application (Frontend)
+│   ├── app/            # App Router (Pages & API Routes)
+│   ├── components/     # UI & Layout Components
+│   └── store/          # Zustand State Management
 ├── backend/            # Express.js API & AI Logic
-│   ├── src/routes/     # API & Chatbot Routes
-│   └── src/index.ts    # Server Entry Point
-├── frontend/           # Next.js 16 Application
-│   ├── src/app/        # App Router & API Handlers
-│   └── src/components/ # ChatBot & UI Components
-└── vercel.json         # Modern Unified Deployment Config
+│   ├── src/controllers # Request Handlers
+│   ├── src/models/     # Mongoose Models
+│   └── src/routes/     # API Routes
+├── public/             # Static Assets & Screenshots
+└── vercel.json         # Unified Deployment Config
 ```
 
 ---
@@ -71,6 +79,7 @@ Clone the repo and add your keys to a `.env` file in the root:
 MONGO_URI=your_mongodb_uri
 JWT_SECRET=your_secret
 GEMINI_API_KEY=your_gemini_key
+NEXT_PUBLIC_API_URL=http://localhost:5000/api
 ```
 
 ### 2️⃣ Run Locally
@@ -78,8 +87,8 @@ GEMINI_API_KEY=your_gemini_key
 # Install root dependencies
 npm install
 
-# Run both Frontend & Backend
-npm run dev
+# Run both Frontend & Backend concurrently
+npm run dev:all
 ```
 
 ---
