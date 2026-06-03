@@ -2,6 +2,9 @@
   "name": "loompro",
   "version": "0.1.0",
   "private": true,
+  "workspaces": [
+    "backend"
+  ],
   "scripts": {
     "dev": "next dev",
     "dev:all": "concurrently \"npm run dev\" \"cd backend && npm run dev\"",
