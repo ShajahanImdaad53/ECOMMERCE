@@ -47,7 +47,7 @@ export default function CartPage() {
                     className="flex items-center p-4 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl"
                   >
                     <div className="h-24 w-24 relative rounded-xl overflow-hidden bg-zinc-100 dark:bg-zinc-800 flex-shrink-0">
-                      <Image src={item.image} alt={item.name} fill className="object-cover" />
+                      <Image src={item.image?.replace(/^http:\/\/localhost:\d+/, '') || '/images/logo.png'} alt={item.name} fill className="object-cover" />
                     </div>
                     <div className="ml-6 flex-1">
                       <div className="flex justify-between">

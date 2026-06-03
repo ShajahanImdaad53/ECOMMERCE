@@ -62,7 +62,7 @@ export default function ProductDetails() {
       _id: product._id,
       name: product.name,
       price: product.price,
-      image: product.images[0],
+      image: product.images[0]?.replace(/^http:\/\/localhost:\d+/, '') || '/images/logo.png',
       quantity: quantity,
     });
   };
@@ -86,7 +86,7 @@ export default function ProductDetails() {
           >
             <div className="aspect-square relative rounded-3xl overflow-hidden bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
               <Image
-                src={product.images[0]}
+                src={product.images[0]?.replace(/^http:\/\/localhost:\d+/, '') || '/images/logo.png'}
                 alt={product.name}
                 fill
                 className="object-cover"
@@ -96,7 +96,7 @@ export default function ProductDetails() {
               {/* Thumbnail placeholders */}
               {[1, 2, 3, 4].map((i) => (
                 <div key={i} className="aspect-square relative rounded-xl overflow-hidden bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 cursor-pointer hover:border-indigo-600 transition-colors">
-                   <Image src={product.images[0]} alt="" fill className="object-cover opacity-50" />
+                   <Image src={product.images[0]?.replace(/^http:\/\/localhost:\d+/, '') || '/images/logo.png'} alt="" fill className="object-cover opacity-50" />
                 </div>
               ))}
             </div>
