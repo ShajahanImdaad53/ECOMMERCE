@@ -7,6 +7,9 @@ interface User {
   email: string;
   isAdmin: boolean;
   token: string;
+  address?: string;
+  phone?: string;
+  postalCode?: string;
 }
 
 interface AuthState {
