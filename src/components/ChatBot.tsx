@@ -15,14 +15,25 @@ export default function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
   const [input, setInput] = useState("");
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: "1",
-      role: "bot",
-      content: "Hi there! I'm Loomy, your LoomPro assistant. How can I help you today?",
-      timestamp: new Date(),
-    },
-  ]);
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [isInitialized, setIsInitialized] = useState(false);
+  
+  useEffect(() => {
+    if (!isInitialized) {
+      const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      const today = days[new Date().getDay()];
+      setMessages([
+        {
+          id: "1",
+          role: "bot",
+          content: `Hi Sir, Happy ${today}! I'm Loomy, your LoomPro assistant. How can I help you today?`,
+          timestamp: new Date(),
+        }
+      ]);
+      setIsInitialized(true);
+    }
+  }, [isInitialized]);
+  
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -233,13 +244,6 @@ export default function ChatBot() {
                       <Send className="w-4 h-4" />
                     </button>
                   </form>
-                  <div className="flex items-center justify-center gap-1 mt-3">
-                    <div className="w-1 h-1 rounded-full bg-zinc-300 dark:bg-zinc-700" />
-                    <p className="text-[10px] text-zinc-400 font-medium">
-                      Powered by LoomPro AI
-                    </p>
-                    <div className="w-1 h-1 rounded-full bg-zinc-300 dark:bg-zinc-700" />
-                  </div>
                 </div>
               </>
             )}

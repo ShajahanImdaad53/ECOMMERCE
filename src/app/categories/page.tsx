@@ -13,32 +13,28 @@ const categories = [
     slug: 'silk',
     description: 'Luxurious hand-woven silk textiles.',
     icon: Watch,
-    color: 'from-amber-600 to-yellow-600',
-    image: 'https://images.unsplash.com/photo-1610030469619-335689100913?q=80&w=1000'
+    image: '/images/categories/category_silk_1784771541606.jpg'
   },
   {
     name: 'Cotton Sarongs',
     slug: 'cotton',
     description: 'Breathable and soft traditional cotton sarongs.',
     icon: Smartphone,
-    color: 'from-blue-600 to-cyan-600',
-    image: 'https://images.unsplash.com/photo-1590736704728-f4730bb30770?q=80&w=1000'
+    image: '/images/categories/category_cotton_1784771561172.jpg'
   },
   {
     name: 'Traditional Wear',
     slug: 'traditional',
     description: 'Heritage designs preserved through generations.',
     icon: Home,
-    color: 'from-indigo-600 to-violet-600',
-    image: 'https://images.unsplash.com/photo-1594191316027-6f02120e53a3?q=80&w=1000'
+    image: '/images/categories/category_traditional_1784771580927.jpg'
   },
   {
     name: 'Premium Edition',
     slug: 'premium',
     description: 'Limited edition masterpieces from master weavers.',
     icon: Watch,
-    color: 'from-purple-600 to-pink-600',
-    image: 'https://images.unsplash.com/photo-1617146059253-66224424361c?q=80&w=1000'
+    image: '/images/categories/category_premium_1784771597998.jpg'
   },
 ];
 
@@ -48,59 +44,60 @@ export default function CategoriesPage() {
       <Navbar />
       
       {/* Header */}
-      <section className="relative py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-zinc-50 dark:bg-zinc-900/50 -z-10" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="bg-zinc-950 py-32 text-center relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/20 via-zinc-950 to-zinc-950 opacity-80" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-6xl font-black text-zinc-900 dark:text-white"
+            className="text-6xl md:text-8xl font-black text-white tracking-tighter leading-tight"
           >
-            Explore <span className="text-indigo-600">Categories</span>
+            EXPLORE <span className="text-primary italic">CATEGORIES</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="mt-6 text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto"
+            className="mt-8 text-zinc-400 max-w-2xl mx-auto text-xl font-medium"
           >
-            Discover our wide range of premium products organized by category. Find exactly what you need with ease.
+            Discover our wide range of premium products organized by category. Find exactly what you need with ease. Elevated luxury for your lifestyle.
           </motion.p>
         </div>
       </section>
 
       {/* Categories Grid */}
-      <section className="py-24">
+      <section className="py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {categories.map((cat, index) => (
               <motion.div
                 key={cat.slug}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
               >
-                <Link href={`/shop?category=${cat.slug}`} className="group block h-full">
-                  <div className="relative h-full bg-white dark:bg-zinc-900 rounded-[2.5rem] border border-zinc-200 dark:border-zinc-800 p-8 transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2 overflow-hidden">
-                    {/* Background Icon */}
-                    <cat.icon className="absolute -bottom-8 -right-8 h-48 w-48 text-zinc-100 dark:text-zinc-800 transition-transform duration-700 group-hover:scale-110 group-hover:-rotate-12" />
+                <Link href={`/shop?category=${cat.slug}`} className="group relative block h-[32rem] rounded-[2.5rem] overflow-hidden cursor-pointer shadow-2xl shadow-zinc-900/20">
+                  <Image 
+                    src={cat.image}
+                    alt={cat.name}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-1000 ease-out"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
+                  
+                  <div className="absolute inset-0 p-12 flex flex-col justify-end text-white relative z-10">
+                    <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                      <div className={`h-16 w-16 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center text-white mb-6 border border-white/20`}>
+                        <cat.icon className="h-8 w-8 text-primary" />
+                      </div>
+                      <h3 className="text-4xl font-black tracking-tight">{cat.name}</h3>
+                      <p className="text-zinc-300 mt-3 font-medium text-lg">{cat.description}</p>
+                    </div>
                     
-                    <div className="relative z-10">
-                      <div className={`h-14 w-14 rounded-2xl bg-gradient-to-br ${cat.color} flex items-center justify-center text-white mb-6 shadow-lg`}>
-                        <cat.icon className="h-7 w-7" />
-                      </div>
-                      <h3 className="text-2xl font-bold text-zinc-900 dark:text-white mb-3 group-hover:text-indigo-600 transition-colors">
-                        {cat.name}
-                      </h3>
-                      <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed mb-8">
-                        {cat.description}
-                      </p>
-                      
-                      <div className="flex items-center text-sm font-bold text-indigo-600 uppercase tracking-widest">
-                        Browse Products
-                        <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                      </div>
+                    <div className="mt-8 flex items-center space-x-3 text-sm font-black uppercase tracking-widest text-primary opacity-0 group-hover:opacity-100 transition-all translate-y-8 group-hover:translate-y-0 duration-500 delay-75">
+                      <span>Browse Products</span>
+                      <ChevronRight className="h-5 w-5" />
                     </div>
                   </div>
                 </Link>
