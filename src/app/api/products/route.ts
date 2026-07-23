@@ -1,5 +1,5 @@
-import { NextResponse } from 'next';
-import { products } from '../../../../backend/src/data/products';
+import { NextResponse } from 'next/server';
+import { products } from '../../../data/products';
 
 // Helper to add mock IDs to fallback products
 const getFallbackProducts = () => {
