@@ -20,7 +20,7 @@ const FAQS = [
     icon: Truck,
     questions: [
       { q: "How long does shipping take?", a: "Standard delivery within Sri Lanka takes 2-4 business days. International shipping takes 7-14 business days depending on the destination." },
-      { q: "Do you offer free shipping?", a: "Yes, we offer free standard shipping on all orders over Rs. 10,000 within Sri Lanka." }
+      { q: "Do you offer free shipping?", a: "Yes, we offer free standard shipping on all orders over $100 worldwide." }
     ]
   },
   { 

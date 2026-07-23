@@ -91,14 +91,14 @@ export default function CheckoutPage() {
                       <p className="text-sm font-bold text-zinc-900 dark:text-white line-clamp-1">{item.name}</p>
                       <p className="text-xs text-zinc-500">Qty: {item.quantity}</p>
                     </div>
-                    <p className="font-bold text-sm">Rs. {item.price * item.quantity}</p>
+                    <p className="font-bold text-sm">${item.price * item.quantity}</p>
                   </div>
                 ))}
               </div>
               <div className="space-y-3 pt-6 border-t border-zinc-100 dark:border-zinc-800">
                 <div className="flex justify-between text-zinc-500 text-sm">
                   <span>Subtotal</span>
-                  <span className="font-bold text-zinc-900 dark:text-white">Rs. {getTotalPrice()}</span>
+                  <span className="font-bold text-zinc-900 dark:text-white">${getTotalPrice()}</span>
                 </div>
                 <div className="flex justify-between text-zinc-500 text-sm">
                   <span>Shipping</span>
@@ -106,7 +106,7 @@ export default function CheckoutPage() {
                 </div>
                 <div className="flex justify-between text-xl font-black text-zinc-900 dark:text-white pt-4">
                   <span>Total</span>
-                  <span className="text-primary">Rs. {getTotalPrice()}</span>
+                  <span className="text-primary">${getTotalPrice()}</span>
                 </div>
               </div>
               <div className="mt-8 p-4 bg-zinc-50 dark:bg-zinc-800/50 rounded-2xl flex items-start space-x-3">

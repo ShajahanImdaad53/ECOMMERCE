@@ -75,7 +75,7 @@ export default function CartPage() {
                             <Plus className="h-3 w-3" />
                           </button>
                         </div>
-                        <span className="font-bold text-zinc-900 dark:text-white">Rs. {item.price * item.quantity}</span>
+                        <span className="font-bold text-zinc-900 dark:text-white">${item.price * item.quantity}</span>
                       </div>
                     </div>
                   </motion.div>
@@ -90,7 +90,7 @@ export default function CartPage() {
                 <div className="space-y-4">
                   <div className="flex justify-between text-zinc-600 dark:text-zinc-400">
                     <span>Subtotal</span>
-                    <span className="font-semibold text-zinc-900 dark:text-white">Rs. {getTotalPrice()}</span>
+                    <span className="font-semibold text-zinc-900 dark:text-white">${getTotalPrice()}</span>
                   </div>
                   <div className="flex justify-between text-zinc-600 dark:text-zinc-400">
                     <span>Shipping</span>
@@ -98,11 +98,11 @@ export default function CartPage() {
                   </div>
                   <div className="flex justify-between text-zinc-600 dark:text-zinc-400">
                     <span>Tax</span>
-                    <span className="font-semibold text-zinc-900 dark:text-white">Rs. 0.00</span>
+                    <span className="font-semibold text-zinc-900 dark:text-white">$0.00</span>
                   </div>
                   <div className="pt-4 border-t border-zinc-200 dark:border-zinc-800 flex justify-between items-center">
                     <span className="text-lg font-bold text-zinc-900 dark:text-white">Total</span>
-                    <span className="text-2xl font-bold text-primary">Rs. {getTotalPrice()}</span>
+                    <span className="text-2xl font-bold text-primary">${getTotalPrice()}</span>
                   </div>
                 </div>
                 <button className="w-full mt-8 bg-primary text-white font-bold py-4 rounded-full flex items-center justify-center space-x-2 hover:bg-primary-hover transition-all hover:scale-[1.02] active:scale-95 shadow-lg shadow-primary/25">

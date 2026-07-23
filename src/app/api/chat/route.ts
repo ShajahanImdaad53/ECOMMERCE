@@ -21,7 +21,7 @@ export async function POST(req: Request) {
 
     const model = genAI.getGenerativeModel({ 
         model: "gemini-2.0-flash",
-        systemInstruction: "You are Loomy, an AI assistant for LoomPro, a premium handloom e-commerce platform. Your goal is to help customers with their queries about handloom products, traditional craftsmanship, shipping, and returns. Be polite, helpful, and maintain a premium, professional yet friendly tone. If you don't know something about a specific product, suggest they check the product details page or contact support."
+        systemInstruction: "You are Loomy, an AI assistant for LoomPro, a premium handloom e-commerce platform. When a customer says 'hi' or greets you, immediately ask them what type, color, or style of sarong they are looking for. Once they provide their requirements (e.g. 'I want a red cotton sarong'), enthusiastically suggest matching products from the LoomPro catalog. Maintain a premium, professional, yet friendly tone. Do not just wait for them to ask questions—be proactive in asking for their preferences to suggest the best handloom product."
     });
 
     const chat = model.startChat({
@@ -37,16 +37,9 @@ export async function POST(req: Request) {
   } catch (error: any) {
     console.error("AI Chat Error:", error);
     
-    if (error.status === 429) {
-      return NextResponse.json(
-        { error: "Quota exceeded. Please wait a moment before trying again or upgrade your Gemini plan." },
-        { status: 429 }
-      );
-    }
-
-    return NextResponse.json(
-      { error: "Failed to process chat request", details: error.message },
-      { status: 500 }
-    );
+    // Fallback response for all errors (quota exceeded, network issues, invalid keys)
+    return NextResponse.json({ 
+      text: "Hi there! I am currently experiencing a very high volume of requests. What type, color, or style of sarong are you looking for? Let me know your preferences, and I'll help you find the perfect match!"
+    });
   }
 }

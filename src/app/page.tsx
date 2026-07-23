@@ -75,38 +75,52 @@ export default function Home() {
 
       {/* Newsletter Section */}
       <motion.section 
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 1 }}
-        className="py-20"
+        transition={{ duration: 1, type: "spring", bounce: 0.4 }}
+        className="py-24 relative overflow-hidden"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-primary rounded-3xl p-12 md:p-20 text-center relative overflow-hidden shadow-2xl shadow-primary/30">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary/5 dark:to-primary/10 pointer-events-none" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="bg-gradient-to-br from-primary via-[#ff7a33] to-[#ff4000] rounded-[3rem] p-12 md:p-24 text-center relative overflow-hidden shadow-2xl shadow-primary/40 group">
+             {/* Dynamic background shapes */}
              <motion.div 
-               animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0] }}
-               transition={{ duration: 15, repeat: Infinity }}
-               className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-white/10 rounded-full blur-3xl" 
+               animate={{ scale: [1, 1.5, 1], rotate: [0, 180, 360], x: [0, 50, 0] }}
+               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+               className="absolute top-0 right-0 -mr-32 -mt-32 w-[30rem] h-[30rem] bg-white/10 rounded-full blur-[80px]" 
              />
              <motion.div 
-               animate={{ scale: [1, 1.3, 1], rotate: [0, -90, 0] }}
-               transition={{ duration: 20, repeat: Infinity }}
-               className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-orange-400/20 rounded-full blur-3xl" 
+               animate={{ scale: [1, 1.2, 1], rotate: [360, 180, 0], x: [0, -50, 0] }}
+               transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+               className="absolute bottom-0 left-0 -ml-32 -mb-32 w-[30rem] h-[30rem] bg-yellow-400/20 rounded-full blur-[80px]" 
+             />
+             <motion.div
+               animate={{ y: [0, -20, 0] }}
+               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+               className="absolute top-20 left-20 w-12 h-12 bg-white/20 rounded-full blur-xl"
              />
              
-             <h2 className="text-4xl md:text-6xl font-black text-white relative z-10 tracking-tight leading-tight">JOIN THE <br/>LOOMPRO CLUB</h2>
-             <p className="mt-6 text-xl text-orange-50-white relative z-10 max-w-xl mx-auto font-medium opacity-90 text-white">
-               Get 20% off your first order and stay ahead with exclusive trends.
+             <h2 className="text-5xl md:text-7xl font-black text-white relative z-10 tracking-tighter leading-[1.1] mb-6">
+               JOIN THE <br/>
+               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-orange-200 drop-shadow-sm">LOOMPRO CLUB</span>
+             </h2>
+             <p className="text-xl md:text-2xl text-orange-50 relative z-10 max-w-2xl mx-auto font-medium opacity-95">
+               Get 20% off your first order and stay ahead with exclusive handloom trends.
              </p>
-             <form className="mt-12 flex flex-col sm:flex-row gap-4 max-w-lg mx-auto relative z-10">
+             <form className="mt-12 flex flex-col sm:flex-row gap-4 max-w-xl mx-auto relative z-10">
                 <input 
                   type="email" 
-                  placeholder="Enter your email" 
-                  className="flex-1 px-8 py-5 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-orange-100 focus:outline-none focus:ring-4 focus:ring-white/30 backdrop-blur-md transition-all"
+                  placeholder="Enter your best email..." 
+                  className="flex-1 px-8 py-5 rounded-2xl bg-white/10 border border-white/20 text-white placeholder:text-orange-200 focus:outline-none focus:ring-4 focus:ring-white/40 focus:bg-white/20 backdrop-blur-xl transition-all shadow-inner text-lg"
                 />
-                <button className="px-10 py-5 bg-white text-primary font-black rounded-xl hover:bg-orange-50 transition-all hover:scale-105 active:scale-95 shadow-xl">
-                  SUBSCRIBE
-                </button>
+                <motion.button 
+                  whileHover={{ scale: 1.05, backgroundColor: "#fff" }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-10 py-5 bg-white/95 text-primary font-black rounded-2xl shadow-[0_0_40px_rgba(255,255,255,0.3)] transition-all text-lg tracking-wide hover:shadow-[0_0_60px_rgba(255,255,255,0.5)] flex items-center justify-center space-x-2"
+                >
+                  <span>SUBSCRIBE</span>
+                </motion.button>
              </form>
           </div>
         </div>

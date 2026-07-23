@@ -70,9 +70,9 @@ export default function ProductCard({ product }: ProductCardProps) {
 
         <div className="mt-3 flex flex-col">
           <div className="flex items-baseline space-x-2">
-            <span className="text-xl font-black text-primary">Rs. {discountPrice.toLocaleString()}</span>
+            <span className="text-xl font-black text-primary">${discountPrice.toLocaleString()}</span>
             {product.discount && (
-              <span className="text-xs text-zinc-400 line-through">Rs. {product.price.toLocaleString()}</span>
+              <span className="text-xs text-zinc-400 line-through">${product.price.toLocaleString()}</span>
             )}
           </div>
           <div className="mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
