@@ -175,7 +175,17 @@ export default function ChatBot() {
                             : "bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-bl-none border border-zinc-200 dark:border-zinc-700 shadow-sm"
                         }`}
                       >
-                        {msg.content}
+                        {msg.content.split(/(\[[^\]]+\]\([^)]+\))/g).map((part, i) => {
+                          const match = part.match(/\[([^\]]+)\]\(([^)]+)\)/);
+                          if (match) {
+                            return (
+                              <a key={i} href={match[2]} className="underline font-bold text-primary hover:opacity-80 transition-opacity">
+                                {match[1]}
+                              </a>
+                            );
+                          }
+                          return <span key={i}>{part}</span>;
+                        })}
                         <div className={`text-[9px] mt-1.5 opacity-60 ${msg.role === "user" ? "text-right" : "text-left"}`}>
                           {msg.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                         </div>
